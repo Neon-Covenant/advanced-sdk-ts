@@ -1,8 +1,5 @@
-import {
-  GetAccountResponse as GetAccountResp,
-  ListAccountsRequest as ListAccountsReq,
-  ListAccountsResponse as ListAccountsResp,
-} from '../types/accounts-types';
+import { GetAccountResponse as GetAccountResp } from '../../model/GetAccountResponse';
+import { GetAccountsResponse } from '../../model/GetAccountsResponse';
 
 export type GetAccountRequest = {
   accountUuid: string;
@@ -10,6 +7,9 @@ export type GetAccountRequest = {
 
 export type GetAccountResponse = GetAccountResp;
 
-export type ListAccountsRequest = ListAccountsReq;
+export type ListAccountsRequest = {
+  limit?: number;
+  cursor?: string;
+};
 
-export type ListAccountsResponse = ListAccountsResp;
+export type ListAccountsResponse = GetAccountsResponse;
