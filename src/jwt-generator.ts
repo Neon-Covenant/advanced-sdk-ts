@@ -9,6 +9,7 @@ export function generateToken(
   apiSecret: string
 ): string {
   const uri = `${requestMethod} ${BASE_URL}${requestPath}`;
+  console.log(`JWT URI: ${uri}`);
   const payload = {
     iss: JWT_ISSUER,
     nbf: Math.floor(Date.now() / 1000),
