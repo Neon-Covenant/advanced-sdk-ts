@@ -1,5 +1,5 @@
 {
-  "name": "@coinbase-samples/advanced-trade-sdk-ts",
+  "name": "@coinbase-sample/advanced-trade-sdk-ts",
   "version": "0.2.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

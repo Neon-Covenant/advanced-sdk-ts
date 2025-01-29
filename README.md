@@ -11,7 +11,7 @@ For more information on all the available REST endpoints, see the [API Reference
 ## Installation
 
 ```bash
-npm install @coinbase-samples/advanced-trade-sdk-ts
+npm install @coinbase-sample/advanced-trade-sdk-ts
 ```
 
 ---
