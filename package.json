@@ -1,12 +1,13 @@
 {
   "name": "@coinbase-samples/advanced-sdk-ts",
   "version": "0.1.0",
-  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "lint": "eslint . --ext .js,.ts",
-    "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\""
+    "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\"",
+    "gen-types": "openapi-generator-cli generate -i apiSpec/retail-public-api-spec.json -g typescript-node --global-property models -o apiSpec/types --additional-properties=supportsES6=true --additional-properties=snapshot=true && cd apiSpec && node generateTypes.js",
+    "replace-model": "rm -r src/model && cp -r apiSpec/types/processed src/model"
   },
   "files": [
     "dist/"
@@ -16,6 +17,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@coinbase-sample/core-ts": "^0.1.0",
     "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
