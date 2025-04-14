@@ -64,4 +64,7 @@ export enum NewOrderFailureReason {
   InvalidAttachedStopLossPricePrecision = 'INVALID_ATTACHED_STOP_LOSS_PRICE_PRECISION',
   InvalidAttachedTakeProfitPriceOutOfBounds = 'INVALID_ATTACHED_TAKE_PROFIT_PRICE_OUT_OF_BOUNDS',
   InvalidAttachedStopLossPriceOutOfBounds = 'INVALID_ATTACHED_STOP_LOSS_PRICE_OUT_OF_BOUNDS',
+  InvalidAttachedTakeProfitPriceExceedsMaxDistanceFromOriginatingPrice = 'INVALID_ATTACHED_TAKE_PROFIT_PRICE_EXCEEDS_MAX_DISTANCE_FROM_ORIGINATING_PRICE',
+  InvalidAttachedTakeProfitSizeBelowMin = 'INVALID_ATTACHED_TAKE_PROFIT_SIZE_BELOW_MIN',
+  AttachedOrderSizeMustBeNil = 'ATTACHED_ORDER_SIZE_MUST_BE_NIL',
 }

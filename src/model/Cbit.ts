@@ -20,4 +20,5 @@
 
 export type Cbit = {
   cbitWalletAddress?: string;
+  customersBankAccountId?: string;
 };

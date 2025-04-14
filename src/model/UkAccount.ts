@@ -18,9 +18,12 @@
  *  Do not edit the class manually.
  */
 
+import { Address } from './Address';
+
 export type UkAccount = {
   legalName?: string;
   bban?: string;
   sortCode?: string;
   accountNumber?: string;
+  address?: Address;
 };

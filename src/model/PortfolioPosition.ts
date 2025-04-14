@@ -18,8 +18,12 @@
  *  Do not edit the class manually.
  */
 
+import { AccountType } from './enums/AccountType';
 import { Amount } from './Amount';
 
+/**
+ * PortfolioPosition represents a spot position for a user in a portfolio.
+ */
 export type PortfolioPosition = {
   asset?: string;
   accountUuid?: string;
@@ -27,8 +31,15 @@ export type PortfolioPosition = {
   totalBalanceCrypto?: number;
   availableToTradeFiat?: number;
   allocation?: number;
-  oneDayChange?: number;
   costBasis?: Amount;
   assetImgUrl?: string;
   isCash?: boolean;
+  averageEntryPrice?: Amount;
+  assetUuid?: string;
+  availableToTradeCrypto?: number;
+  unrealizedPnl?: number;
+  availableToTransferFiat?: number;
+  availableToTransferCrypto?: number;
+  assetColor?: string;
+  accountType?: AccountType;
 };

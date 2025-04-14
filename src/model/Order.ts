@@ -171,4 +171,16 @@ export type Order = {
    * The ID of the portfolio this order is associated with.
    */
   retailPortfolioId?: string;
+  /**
+   * The ID of the parent order of an attached order.
+   */
+  originatingOrderId?: string;
+  /**
+   * The ID of the attached order of a parent order.
+   */
+  attachedOrderId?: string;
+  /**
+   * The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the originating or parent order.
+   */
+  attachedOrderConfiguration?: OrderConfiguration;
 };

@@ -20,6 +20,7 @@
 
 import { Amount } from './Amount';
 import { Disclosure } from './Disclosure';
+import { WaivedDetails } from './WaivedDetails';
 
 /**
  * Fee represents a single fee type. A single trade may have multiple fees.
@@ -30,4 +31,5 @@ export type Fee = {
   amount?: Amount;
   label?: string;
   disclosure?: Disclosure;
+  waivedDetails?: WaivedDetails;
 };

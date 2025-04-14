@@ -23,4 +23,5 @@ export type LiquidityPool = {
   pool?: string;
   currency?: string;
   accountId?: string;
+  fromAddress?: string;
 };

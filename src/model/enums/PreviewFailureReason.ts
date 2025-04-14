@@ -93,4 +93,8 @@ export enum PreviewFailureReason {
   PreviewOrderSizeExceedsBracketedPosition = 'PREVIEW_ORDER_SIZE_EXCEEDS_BRACKETED_POSITION',
   PreviewInvalidLimitPricePrecision = 'PREVIEW_INVALID_LIMIT_PRICE_PRECISION',
   PreviewInvalidStopTriggerPricePrecision = 'PREVIEW_INVALID_STOP_TRIGGER_PRICE_PRECISION',
+  PreviewInvalidAttachedTakeProfitPriceExceedsMaxDistanceFromOriginatingPrice = 'PREVIEW_INVALID_ATTACHED_TAKE_PROFIT_PRICE_EXCEEDS_MAX_DISTANCE_FROM_ORIGINATING_PRICE',
+  PreviewInvalidAttachedTakeProfitSizeBelowMin = 'PREVIEW_INVALID_ATTACHED_TAKE_PROFIT_SIZE_BELOW_MIN',
+  PreviewAttachedOrderSizeMustBeNil = 'PREVIEW_ATTACHED_ORDER_SIZE_MUST_BE_NIL',
+  PreviewBelowMinSizeForDuration = 'PREVIEW_BELOW_MIN_SIZE_FOR_DURATION',
 }

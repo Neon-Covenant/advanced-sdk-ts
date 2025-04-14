@@ -42,4 +42,8 @@ export enum ErrorCodes {
   ErrorCodesTransactionNotAllowed = 'ERROR_CODES_TRANSACTION_NOT_ALLOWED',
   DepositNotAuthorized = 'DEPOSIT_NOT_AUTHORIZED',
   PlaidInsufficientFunds = 'PLAID_INSUFFICIENT_FUNDS',
+  ErrorCodesLimitErrorIdvMissing = 'ERROR_CODES_LIMIT_ERROR_IDV_MISSING',
+  ErrorCodesPaymentRejectedByProvider = 'ERROR_CODES_PAYMENT_REJECTED_BY_PROVIDER',
+  ErrorCodesMissing3DsAuthentication = 'ERROR_CODES_MISSING_3DS_AUTHENTICATION',
+  ErrorCodesAuthOrWithdrawalLimit = 'ERROR_CODES_AUTH_OR_WITHDRAWAL_LIMIT',
 }

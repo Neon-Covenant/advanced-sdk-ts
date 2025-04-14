@@ -20,6 +20,10 @@
 
 export type SorLimitIoc = {
   /**
+   * The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset.
+   */
+  quoteSize?: string;
+  /**
    * The amount of the first Asset in the Trading Pair. For example, on the BTC-USD Order Book, BTC is the Base Asset.
    */
   baseSize?: string;

@@ -24,6 +24,9 @@ import { Portfolio } from './Portfolio';
 import { PortfolioBalances } from './PortfolioBalances';
 import { PortfolioPosition } from './PortfolioPosition';
 
+/**
+ * PortfolioBreakdown is a breakdown of a portfolio, all balances, and all positions within the portfolio.
+ */
 export type PortfolioBreakdown = {
   portfolio?: Portfolio;
   portfolioBalances?: PortfolioBalances;

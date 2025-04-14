@@ -20,6 +20,9 @@
 
 import { Amount } from './Amount';
 
+/**
+ * Balance pair represents balances in both native and raw underlying currency.
+ */
 export type BalancePair = {
   userNativeCurrency?: Amount;
   rawCurrency?: Amount;

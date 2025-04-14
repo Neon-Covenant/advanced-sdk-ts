@@ -1,25 +1,19 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Coinbase Advanced Trade API",
+    "title": "REST API",
+    "description": "# Welcome to Coinbase Advanced Trade API\n## Introduction\nThe Advanced Trade API (or Advanced API) supports programmatic trading and order management with a REST API and WebSocket protocol for real-time market data.\nThe following API pages detail various REST API endpoints we offer.\n## Getting Started\nTo get started, please visit one of the following pages:\n- [Authentication](/advanced-trade/docs/rest-api-auth)\n- [Rate limits](/advanced-trade/docs/rest-api-rate-limits)\n- [Postman files](/advanced-trade/docs/rest-api-postman)\n- [Make your first trade](/advanced-trade/docs/sdk-rest-client-trade)\n## Websocket API\n- [Websocket API reference](/advanced-trade/docs/ws-overview)",
     "version": "0.1"
   },
   "host": "api.coinbase.com",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json",
-    "text/event-stream"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json", "text/event-stream"],
   "paths": {
     "/api/v3/brokerage/accounts": {
       "get": {
         "summary": "List Accounts",
-        "description": "Get a list of authenticated accounts for the current user.",
+        "description": "Get a list of authenticated Advanced Trade accounts for the current user.",
         "operationId": "RetailBrokerageApi_GetAccounts",
         "responses": {
           "200": {
@@ -59,9 +53,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Accounts"
-        ]
+        "tags": ["Accounts"]
       }
     },
     "/api/v3/brokerage/accounts/{account_uuid}": {
@@ -92,9 +84,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Accounts"
-        ]
+        "tags": ["Accounts"]
       }
     },
     "/api/v3/brokerage/best_bid_ask": {
@@ -129,9 +119,7 @@
             "collectionFormat": "multi"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/product_book": {
@@ -177,9 +165,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/products": {
@@ -224,11 +210,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_PRODUCT_TYPE",
-              "SPOT",
-              "FUTURE"
-            ],
+            "enum": ["UNKNOWN_PRODUCT_TYPE", "SPOT", "FUTURE"],
             "default": "UNKNOWN_PRODUCT_TYPE"
           },
           {
@@ -248,11 +230,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_CONTRACT_EXPIRY_TYPE",
-              "EXPIRING",
-              "PERPETUAL"
-            ],
+            "enum": ["UNKNOWN_CONTRACT_EXPIRY_TYPE", "EXPIRING", "PERPETUAL"],
             "default": "UNKNOWN_CONTRACT_EXPIRY_TYPE"
           },
           {
@@ -282,11 +260,22 @@
             "in": "query",
             "required": false,
             "type": "boolean"
+          },
+          {
+            "name": "products_sort_order",
+            "description": "The order in which products are returned. By default, products are returned in 24 hour volume descending (in quote).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "PRODUCTS_SORT_ORDER_UNDEFINED",
+              "PRODUCTS_SORT_ORDER_VOLUME_24H_DESCENDING",
+              "PRODUCTS_SORT_ORDER_LIST_TIME_DESCENDING"
+            ],
+            "default": "PRODUCTS_SORT_ORDER_UNDEFINED"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/products/{product_id}": {
@@ -324,9 +313,7 @@
             "type": "boolean"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/products/{product_id}/candles": {
@@ -398,9 +385,7 @@
             "format": "int32"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/products/{product_id}/ticker": {
@@ -453,9 +438,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Products"
-        ]
+        "tags": ["Products"]
       }
     },
     "/api/v3/brokerage/orders": {
@@ -487,9 +470,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/batch_cancel": {
@@ -521,9 +502,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/edit": {
@@ -555,9 +534,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/edit_preview": {
@@ -589,9 +566,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/historical/batch": {
@@ -642,11 +617,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_PRODUCT_TYPE",
-              "SPOT",
-              "FUTURE"
-            ],
+            "enum": ["UNKNOWN_PRODUCT_TYPE", "SPOT", "FUTURE"],
             "default": "UNKNOWN_PRODUCT_TYPE"
           },
           {
@@ -703,7 +674,8 @@
                 "LIMIT",
                 "STOP",
                 "STOP_LIMIT",
-                "BRACKET"
+                "BRACKET",
+                "TWAP"
               ]
             },
             "collectionFormat": "multi"
@@ -714,10 +686,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "BUY",
-              "SELL"
-            ],
+            "enum": ["BUY", "SELL"],
             "default": ""
           },
           {
@@ -755,11 +724,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_CONTRACT_EXPIRY_TYPE",
-              "EXPIRING",
-              "PERPETUAL"
-            ],
+            "enum": ["UNKNOWN_CONTRACT_EXPIRY_TYPE", "EXPIRING", "PERPETUAL"],
             "default": "UNKNOWN_CONTRACT_EXPIRY_TYPE"
           },
           {
@@ -801,11 +766,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_SORT_BY",
-              "LIMIT_PRICE",
-              "LAST_FILL_TIME"
-            ],
+            "enum": ["UNKNOWN_SORT_BY", "LIMIT_PRICE", "LAST_FILL_TIME"],
             "default": "UNKNOWN_SORT_BY"
           },
           {
@@ -816,9 +777,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/historical/fills": {
@@ -918,17 +877,11 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_SORT_BY",
-              "PRICE",
-              "TRADE_TIME"
-            ],
+            "enum": ["UNKNOWN_SORT_BY", "PRICE", "TRADE_TIME"],
             "default": "UNKNOWN_SORT_BY"
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/historical/{order_id}": {
@@ -973,9 +926,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/preview": {
@@ -1007,9 +958,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/orders/close_position": {
@@ -1041,9 +990,7 @@
             }
           }
         ],
-        "tags": [
-          "Orders"
-        ]
+        "tags": ["Orders"]
       }
     },
     "/api/v3/brokerage/portfolios": {
@@ -1072,18 +1019,11 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNDEFINED",
-              "DEFAULT",
-              "CONSUMER",
-              "INTX"
-            ],
+            "enum": ["UNDEFINED", "DEFAULT", "CONSUMER", "INTX"],
             "default": "UNDEFINED"
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       },
       "post": {
         "summary": "Create Portfolio",
@@ -1113,9 +1053,7 @@
             }
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       }
     },
     "/api/v3/brokerage/portfolios/move_funds": {
@@ -1147,9 +1085,7 @@
             }
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       }
     },
     "/api/v3/brokerage/portfolios/{portfolio_uuid}": {
@@ -1187,9 +1123,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       },
       "delete": {
         "summary": "Delete Portfolio",
@@ -1218,9 +1152,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       },
       "put": {
         "summary": "Edit Portfolio",
@@ -1257,9 +1189,7 @@
             }
           }
         ],
-        "tags": [
-          "Portfolios"
-        ]
+        "tags": ["Portfolios"]
       }
     },
     "/api/v3/brokerage/cfm/balance_summary": {
@@ -1281,9 +1211,7 @@
             }
           }
         },
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/intraday/margin_setting": {
@@ -1305,9 +1233,7 @@
             }
           }
         },
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       },
       "post": {
         "summary": "Set Intraday Margin Setting",
@@ -1337,9 +1263,7 @@
             }
           }
         ],
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/intraday/current_margin_window": {
@@ -1376,9 +1300,7 @@
             "default": "MARGIN_PROFILE_TYPE_UNSPECIFIED"
           }
         ],
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/positions": {
@@ -1400,9 +1322,7 @@
             }
           }
         },
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/positions/{product_id}": {
@@ -1433,9 +1353,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/sweeps/schedule": {
@@ -1467,9 +1385,7 @@
             }
           }
         ],
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/cfm/sweeps": {
@@ -1491,9 +1407,7 @@
             }
           }
         },
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       },
       "delete": {
         "summary": "Cancel Pending Futures Sweep",
@@ -1513,9 +1427,7 @@
             }
           }
         },
-        "tags": [
-          "Futures"
-        ]
+        "tags": ["Futures"]
       }
     },
     "/api/v3/brokerage/intx/allocate": {
@@ -1547,9 +1459,7 @@
             }
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/intx/portfolio/{portfolio_uuid}": {
@@ -1580,9 +1490,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/intx/positions/{portfolio_uuid}": {
@@ -1613,9 +1521,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/intx/positions/{portfolio_uuid}/{symbol}": {
@@ -1653,9 +1559,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/intx/balances/{portfolio_uuid}": {
@@ -1685,9 +1589,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/intx/multi_asset_collateral": {
@@ -1719,9 +1621,7 @@
             }
           }
         ],
-        "tags": [
-          "Perpetuals"
-        ]
+        "tags": ["Perpetuals"]
       }
     },
     "/api/v3/brokerage/transaction_summary": {
@@ -1750,11 +1650,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_PRODUCT_TYPE",
-              "SPOT",
-              "FUTURE"
-            ],
+            "enum": ["UNKNOWN_PRODUCT_TYPE", "SPOT", "FUTURE"],
             "default": "UNKNOWN_PRODUCT_TYPE"
           },
           {
@@ -1763,11 +1659,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_CONTRACT_EXPIRY_TYPE",
-              "EXPIRING",
-              "PERPETUAL"
-            ],
+            "enum": ["UNKNOWN_CONTRACT_EXPIRY_TYPE", "EXPIRING", "PERPETUAL"],
             "default": "UNKNOWN_CONTRACT_EXPIRY_TYPE"
           },
           {
@@ -1776,18 +1668,11 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_VENUE_TYPE",
-              "CBE",
-              "FCM",
-              "INTX"
-            ],
+            "enum": ["UNKNOWN_VENUE_TYPE", "CBE", "FCM", "INTX"],
             "default": "UNKNOWN_VENUE_TYPE"
           }
         ],
-        "tags": [
-          "Fees"
-        ]
+        "tags": ["Fees"]
       }
     },
     "/api/v3/brokerage/convert/quote": {
@@ -1819,9 +1704,7 @@
             }
           }
         ],
-        "tags": [
-          "Converts"
-        ]
+        "tags": ["Converts"]
       }
     },
     "/api/v3/brokerage/convert/trade/{trade_id}": {
@@ -1866,9 +1749,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Converts"
-        ]
+        "tags": ["Converts"]
       },
       "post": {
         "summary": "Commit Convert Trade",
@@ -1905,9 +1786,7 @@
             }
           }
         ],
-        "tags": [
-          "Converts"
-        ]
+        "tags": ["Converts"]
       }
     },
     "/api/v3/brokerage/time": {
@@ -1929,9 +1808,7 @@
             }
           }
         },
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/market/product_book": {
@@ -1977,9 +1854,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/market/products": {
@@ -2024,11 +1899,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_PRODUCT_TYPE",
-              "SPOT",
-              "FUTURE"
-            ],
+            "enum": ["UNKNOWN_PRODUCT_TYPE", "SPOT", "FUTURE"],
             "default": "UNKNOWN_PRODUCT_TYPE"
           },
           {
@@ -2048,11 +1919,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "UNKNOWN_CONTRACT_EXPIRY_TYPE",
-              "EXPIRING",
-              "PERPETUAL"
-            ],
+            "enum": ["UNKNOWN_CONTRACT_EXPIRY_TYPE", "EXPIRING", "PERPETUAL"],
             "default": "UNKNOWN_CONTRACT_EXPIRY_TYPE"
           },
           {
@@ -2075,11 +1942,22 @@
             "in": "query",
             "required": false,
             "type": "boolean"
+          },
+          {
+            "name": "products_sort_order",
+            "description": "The order in which products are returned. By default, products are returned in 24 hour volume descending (in quote).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "PRODUCTS_SORT_ORDER_UNDEFINED",
+              "PRODUCTS_SORT_ORDER_VOLUME_24H_DESCENDING",
+              "PRODUCTS_SORT_ORDER_LIST_TIME_DESCENDING"
+            ],
+            "default": "PRODUCTS_SORT_ORDER_UNDEFINED"
           }
         ],
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/market/products/{product_id}": {
@@ -2110,9 +1988,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/market/products/{product_id}/candles": {
@@ -2184,9 +2060,7 @@
             "format": "int32"
           }
         ],
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/market/products/{product_id}/ticker": {
@@ -2239,9 +2113,7 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "Public"
-        ]
+        "tags": ["Public"]
       }
     },
     "/api/v3/brokerage/payment_methods": {
@@ -2263,9 +2135,7 @@
             }
           }
         },
-        "tags": [
-          "Payment Methods"
-        ]
+        "tags": ["Payment Methods"]
       }
     },
     "/api/v3/brokerage/payment_methods/{payment_method_id}": {
@@ -2290,15 +2160,13 @@
         "parameters": [
           {
             "name": "payment_method_id",
-            "description": "The ID of the payment method. Refer to [List Payment Methods](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpaymentmethods/) for the list of all available payment methods and their corresponding IDs.",
+            "description": "The ID of the payment method. Refer to [List Payment Methods](/advanced-trade/reference/retailbrokerageapi_getpaymentmethods) for the list of all available payment methods and their corresponding IDs.",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
-        "tags": [
-          "Payment Methods"
-        ]
+        "tags": ["Payment Methods"]
       }
     },
     "/api/v3/brokerage/key_permissions": {
@@ -2320,9 +2188,7 @@
             }
           }
         },
-        "tags": [
-          "Data API"
-        ]
+        "tags": ["Data API"]
       }
     }
   },
@@ -2499,6 +2365,129 @@
       ],
       "default": "POSITION_SIDE_UNKNOWN"
     },
+    "coinbase.payment_method_service.ArgentineBankAccountDetails": {
+      "type": "object",
+      "properties": {
+        "tax_id": {
+          "type": "string"
+        },
+        "cbu": {
+          "type": "string"
+        }
+      }
+    },
+    "coinbase.payment_method_service.BankingCircleNowDetails": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "customer_payment_name": {
+          "type": "string"
+        }
+      }
+    },
+    "coinbase.payment_method_service.BlikDetails": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "The RFC-compliant email address of the account holder. (Optional)"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country where the payer's bank account is located. Populated for all Blik payments in the PMSvc API response."
+        },
+        "account_holder": {
+          "type": "string",
+          "description": "Account holder names. This field is optional and may not be populated for all Blik payments in the PMSvc API response."
+        }
+      },
+      "title": "https://developerhub.ppro.com/simple-api/docs/blik-redirect#specific-input-parameters-for-the-transaction-call"
+    },
+    "coinbase.payment_method_service.MbWayDetails": {
+      "type": "object",
+      "title": "Empty details for Mb Way since no input needed from user\nhttps://developerhub.ppro.com/simple-api/docs/mb-way#specific-input-parameters-for-the-transaction-call"
+    },
+    "coinbase.payment_method_service.PixDetails": {
+      "type": "object",
+      "properties": {
+        "account_number": {
+          "type": "string",
+          "title": "The account number for the PIX transaction"
+        },
+        "account_type": {
+          "type": "string",
+          "title": "The type of account (e.g., checking, savings)"
+        },
+        "bank_code": {
+          "type": "string",
+          "title": "The code of the bank involved in the transaction"
+        },
+        "bank_name": {
+          "type": "string",
+          "title": "The name of the bank"
+        },
+        "branch_number": {
+          "type": "string",
+          "title": "The branch number of the bank"
+        },
+        "customer_payment_name": {
+          "type": "string",
+          "title": "The name of the customer making the payment"
+        },
+        "sender_document": {
+          "type": "string",
+          "title": "The sender document for the transaction. It is really the tax_id of the sender: CPF for individual) or CNPJ for business in Brazil"
+        },
+        "pix_key": {
+          "type": "string",
+          "description": "The PIX key for the transaction. Only used for withdraw. For deposit, it is not used."
+        }
+      },
+      "title": "Represents details for a PIX transaction"
+    },
+    "coinbase.payment_method_service.TrustlyDetails": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "The country where the payer's bank account is located. Populated for all Trustly payments in the PMSvc API response."
+        },
+        "iban": {
+          "type": "string",
+          "description": "IBAN of the payer. This field is optional and may not be populated for all Trustly payments in the PMSvc API response."
+        },
+        "account_holder": {
+          "type": "string",
+          "description": "Account holder names. This field is optional and may not be populated for all Trustly payments in the PMSvc API response."
+        },
+        "bank_code": {
+          "type": "string",
+          "description": "Bank code of the payer's bank account. This field is optional and may not be populated for all Trustly payments in the PMSvc API response."
+        },
+        "account_number": {
+          "type": "string",
+          "description": "Bank account number belonging to the payer. This field is optional and may not be populated for all Trustly payments in the PMSvc API response."
+        },
+        "partial_account_number": {
+          "type": "string",
+          "description": "Partial Account Number belonging to the payer. Populated for all Trustly payments in the PMSvc API response."
+        },
+        "bank_name": {
+          "type": "string",
+          "description": "Bank name of the payer. Populated for all Trustly payments in the PMSvc API response."
+        },
+        "email": {
+          "type": "string",
+          "description": "Consumer Email. Populated for all Trustly payments in the PMSvc API response."
+        }
+      },
+      "description": "https://developerhub.ppro.com/simple-api/docs/trustly#specific-input-parameters-for-the-transaction-call."
+    },
     "coinbase.payments.common.Address": {
       "type": "object",
       "properties": {
@@ -2543,7 +2532,8 @@
           "type": "string"
         }
       },
-      "description": "A quantity of money."
+      "description": "This is a clone of",
+      "title": "A quantity of money"
     },
     "coinbase.payments.common.payment_methods.Address": {
       "type": "object",
@@ -2688,21 +2678,36 @@
     },
     "coinbase.payments.common.payment_methods.ApplePay.Result": {
       "type": "string",
-      "enum": [
-        "UNCERTAIN",
-        "TRUE",
-        "FALSE"
-      ],
+      "enum": ["UNCERTAIN", "TRUE", "FALSE"],
       "default": "UNCERTAIN"
     },
     "coinbase.payments.common.payment_methods.ApplePay.Scheme": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "VISA",
-        "MASTERCARD"
-      ],
+      "enum": ["UNKNOWN", "VISA", "MASTERCARD"],
       "default": "UNKNOWN"
+    },
+    "coinbase.payments.common.payment_methods.BancomatPay": {
+      "type": "object",
+      "properties": {
+        "customer_name": {
+          "type": "string"
+        },
+        "account": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.BancomatPayAccount"
+            }
+          ]
+        }
+      }
+    },
+    "coinbase.payments.common.payment_methods.BancomatPayAccount": {
+      "type": "object",
+      "properties": {
+        "phone_number": {
+          "type": "string"
+        }
+      }
     },
     "coinbase.payments.common.payment_methods.BankAccount": {
       "type": "object",
@@ -2756,7 +2761,7 @@
       "type": "object",
       "properties": {
         "first_data_token": {
-          "title": "set by payment initiator ",
+          "description": "A card token locked to the Firstdata vendor.",
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.FirstDataToken"
@@ -2782,6 +2787,7 @@
           ]
         },
         "vault_token": {
+          "description": "A card token provided by our generic token provider.\nThis can technically be provided by any vendor, but is currently only provided by TokenEx.\nThis token can be used to forward card information to any API using the token vault as a middleman.",
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.VaultToken"
@@ -2789,6 +2795,7 @@
           ]
         },
         "worldpay_params": {
+          "description": "A card token locked to the Worldpay vendor.",
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.WorldpayParams"
@@ -2839,6 +2846,18 @@
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.Card.Scheme"
             }
           ]
+        },
+        "eight_digit_bin": {
+          "type": "string",
+          "title": "We will use eight_digit_bin to route payments to the preferred processor based on the card bin.\nA regulatory change in 2022 extended the BIN to eight digits globally due to the increasing number of cards\nWe will set both six_digit_bin and eight_digit_bin in this proto from PLS to PGS\nE.g: 41654902 -> six_digit_bin = 416549, eight_digit_bin = 41654902"
+        },
+        "checkout_token": {
+          "description": "A card token locked to the Checkout vendor.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.CheckoutToken"
+            }
+          ]
         }
       },
       "title": "The card as a payment method source or target"
@@ -2859,17 +2878,16 @@
     },
     "coinbase.payments.common.payment_methods.Card.Scheme": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "VISA",
-        "MASTERCARD"
-      ],
+      "enum": ["UNKNOWN", "VISA", "MASTERCARD"],
       "default": "UNKNOWN"
     },
     "coinbase.payments.common.payment_methods.Cbit": {
       "type": "object",
       "properties": {
         "cbit_wallet_address": {
+          "type": "string"
+        },
+        "customers_bank_account_id": {
           "type": "string"
         }
       }
@@ -2882,6 +2900,15 @@
         }
       },
       "title": "unique identifier for a checkout.com payment link"
+    },
+    "coinbase.payments.common.payment_methods.CheckoutToken": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "title": "A payment source identifier from Checkout with format ^(src)_(\\w{26})$\nExample: src_nwd3m4in3hkuddfpjsaevunhdy"
+        }
+      }
     },
     "coinbase.payments.common.payment_methods.CoinbaseAccount": {
       "type": "object",
@@ -2918,6 +2945,12 @@
         },
         "cohort_id": {
           "type": "string"
+        },
+        "signing_backend": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
         }
       },
       "title": "uniquely identifies a user's dapp wallet account/address"
@@ -2932,6 +2965,12 @@
           "type": "string"
         },
         "cohort_id": {
+          "type": "string"
+        },
+        "user_uuid": {
+          "type": "string"
+        },
+        "pool": {
           "type": "string"
         }
       }
@@ -3115,6 +3154,47 @@
         }
       }
     },
+    "coinbase.payments.common.payment_methods.Eft": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.Eft.Account"
+            }
+          ]
+        }
+      }
+    },
+    "coinbase.payments.common.payment_methods.Eft.Account": {
+      "type": "object",
+      "properties": {
+        "account_name": {
+          "type": "string",
+          "title": "Name of the account fulfilling the Request Money Transaction"
+        },
+        "account_phone_number": {
+          "type": "string",
+          "title": "Phone number of the account fulfilling the Request Money Transaction"
+        },
+        "account_email": {
+          "type": "string",
+          "title": "Email of the account fulfilling the Request Money Transaction"
+        },
+        "institution_number": {
+          "type": "string",
+          "description": "Institution Number: a 3-digit code that tells you which bank the account belongs to \u2014 unique for every Canadian bank."
+        },
+        "transit_number": {
+          "type": "string",
+          "description": "Transit Number: a 5-digit code that tells which branch of the bank the account was created at \u2014 it is unique to each bank branch."
+        },
+        "account_number": {
+          "type": "string",
+          "description": "Account Number: a 7-digit code that identifies the account within the branch and bank entered."
+        }
+      }
+    },
     "coinbase.payments.common.payment_methods.EmailAddress": {
       "type": "object",
       "properties": {
@@ -3191,7 +3271,7 @@
           ]
         }
       },
-      "title": "FedwireAccount represents an account at a financial insitition eligible for Fedwire"
+      "title": "FedwireAccount represents an account at a financial institution eligible for Fedwire"
     },
     "coinbase.payments.common.payment_methods.FedwireAddress": {
       "type": "object",
@@ -3382,21 +3462,24 @@
     },
     "coinbase.payments.common.payment_methods.GooglePay.Result": {
       "type": "string",
-      "enum": [
-        "UNCERTAIN",
-        "TRUE",
-        "FALSE"
-      ],
+      "enum": ["UNCERTAIN", "TRUE", "FALSE"],
       "default": "UNCERTAIN"
     },
     "coinbase.payments.common.payment_methods.GooglePay.Scheme": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "VISA",
-        "MASTERCARD"
-      ],
+      "enum": ["UNKNOWN", "VISA", "MASTERCARD"],
       "default": "UNKNOWN"
+    },
+    "coinbase.payments.common.payment_methods.HotWallet": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
     },
     "coinbase.payments.common.payment_methods.Ideal": {
       "type": "object",
@@ -3436,6 +3519,9 @@
     "coinbase.payments.common.payment_methods.Interac": {
       "type": "object",
       "properties": {
+        "pmsvc_id": {
+          "type": "string"
+        },
         "account": {
           "allOf": [
             {
@@ -3534,14 +3620,61 @@
         },
         "account_id": {
           "type": "string"
+        },
+        "from_address": {
+          "type": "string"
         }
       },
       "title": "For the purpose of Liquidity Management"
+    },
+    "coinbase.payments.common.payment_methods.MagicSpendBlockchainAddress": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "destination_tag": {
+          "type": "string"
+        }
+      },
+      "title": "MagicSpendBlockchainAddress is specific object of type blockchain_address\nwhich is used to uniquely identifies if a user is using magic spend feature\nto send funds to a smart contract wallet"
+    },
+    "coinbase.payments.common.payment_methods.Manual": {
+      "type": "object",
+      "properties": {
+        "settlement_bank_name": {
+          "type": "string"
+        },
+        "settlement_account_number": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        }
+      },
+      "title": "ManualDeposit as a payment method source or target for manual fiat deposits"
     },
     "coinbase.payments.common.payment_methods.Merchant": {
       "type": "object",
       "properties": {
         "mid": {
+          "type": "string"
+        }
+      }
+    },
+    "coinbase.payments.common.payment_methods.NovaAccount": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "type": "string"
+        },
+        "nova_account_id": {
+          "type": "string"
+        },
+        "pool_name": {
+          "type": "string"
+        },
+        "account_idempotency_key": {
           "type": "string"
         }
       }
@@ -3569,14 +3702,19 @@
     },
     "coinbase.payments.common.payment_methods.Owner.Type": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "INVESTMENT_VEHICLE",
-        "RETAIL",
-        "VENUE",
-        "PORTFOLIO"
-      ],
+      "enum": ["UNKNOWN", "INVESTMENT_VEHICLE", "RETAIL", "VENUE", "PORTFOLIO"],
       "default": "UNKNOWN"
+    },
+    "coinbase.payments.common.payment_methods.Params3DS": {
+      "type": "object",
+      "properties": {
+        "ddc_3ds_id": {
+          "type": "string"
+        },
+        "disable_cb_checkout": {
+          "type": "boolean"
+        }
+      }
     },
     "coinbase.payments.common.payment_methods.PaymentMethod": {
       "type": "object",
@@ -3589,6 +3727,9 @@
           ]
         },
         "network": {
+          "type": "string"
+        },
+        "payment_method_id": {
           "type": "string"
         },
         "blockchain_address": {
@@ -3947,6 +4088,111 @@
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.CTN"
             }
           ]
+        },
+        "bancomat_pay": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.BancomatPay"
+            }
+          ]
+        },
+        "hot_wallet": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.HotWallet"
+            }
+          ]
+        },
+        "nova_account": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.NovaAccount"
+            }
+          ]
+        },
+        "magic_spend_blockchain_address": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.MagicSpendBlockchainAddress"
+            }
+          ]
+        },
+        "transfer_pointer": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.TransferPointer"
+            }
+          ]
+        },
+        "eft": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.Eft"
+            }
+          ]
+        },
+        "wallace_account": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.WallaceAccount"
+            }
+          ]
+        },
+        "manual": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.Manual"
+            }
+          ]
+        },
+        "argentine_bank_account": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.ArgentineBankAccountDetails"
+            }
+          ]
+        },
+        "representment": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.Representment"
+            }
+          ]
+        },
+        "banking_circle_now": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.BankingCircleNowDetails"
+            }
+          ]
+        },
+        "trustly": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.TrustlyDetails"
+            }
+          ]
+        },
+        "blik": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.BlikDetails"
+            }
+          ]
+        },
+        "mb_way": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.MbWayDetails"
+            }
+          ]
+        },
+        "pix": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payment_method_service.PixDetails"
+            }
+          ]
         }
       },
       "title": "PaymentMethod is a wrapper describing a specific type of payment method.\n this is probably the only type you need to modify (and possibly VerificationRequest/Response)"
@@ -4007,7 +4253,22 @@
         "EMAIL_ADDRESS",
         "PHONE_NUMBER",
         "VENDOR_PAYMENT",
-        "CTN"
+        "CTN",
+        "BANCOMAT_PAY",
+        "HOT_WALLET",
+        "NOVA_ACCOUNT",
+        "MAGIC_SPEND_BLOCKCHAIN_ADDRESS",
+        "TRANSFER_POINTER",
+        "EFT",
+        "WALLACE_ACCOUNT",
+        "MANUAL",
+        "ARGENTINE_BANK_ACCOUNT",
+        "REPRESENTMENT",
+        "BANKING_CIRCLE_NOW",
+        "TRUSTLY",
+        "BLIK",
+        "MB_WAY",
+        "PIX"
       ],
       "default": "INVALID"
     },
@@ -4025,6 +4286,13 @@
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.payments.common.payment_methods.PaypalMerchant"
+            }
+          ]
+        },
+        "metadata": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.payment_methods.PaypalMetadata"
             }
           ]
         }
@@ -4050,6 +4318,14 @@
         }
       },
       "title": "Represents coinbase's merchant account\nFor payouts, this is the source of funds"
+    },
+    "coinbase.payments.common.payment_methods.PaypalMetadata": {
+      "type": "object",
+      "properties": {
+        "paypal_correlation_id": {
+          "type": "string"
+        }
+      }
     },
     "coinbase.payments.common.payment_methods.PhoneNumber": {
       "type": "object",
@@ -4171,6 +4447,15 @@
         }
       },
       "title": "Represents a customer in remitly"
+    },
+    "coinbase.payments.common.payment_methods.Representment": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string"
+        }
+      },
+      "title": "Representment debit won to overturn a card chargeback"
     },
     "coinbase.payments.common.payment_methods.Rtp": {
       "type": "object",
@@ -4385,11 +4670,7 @@
     },
     "coinbase.payments.common.payment_methods.SgPayNow.IdentifierType": {
       "type": "string",
-      "enum": [
-        "TYPE_UNSPECIFIED",
-        "TYPE_NRIC",
-        "TYPE_PHONE"
-      ],
+      "enum": ["TYPE_UNSPECIFIED", "TYPE_NRIC", "TYPE_PHONE"],
       "default": "TYPE_UNSPECIFIED"
     },
     "coinbase.payments.common.payment_methods.Signet": {
@@ -4508,6 +4789,14 @@
         }
       }
     },
+    "coinbase.payments.common.payment_methods.TransferPointer": {
+      "type": "object",
+      "properties": {
+        "idem": {
+          "type": "string"
+        }
+      }
+    },
     "coinbase.payments.common.payment_methods.Uk": {
       "type": "object",
       "properties": {
@@ -4553,6 +4842,13 @@
         },
         "account_number": {
           "type": "string"
+        },
+        "address": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.payments.common.Address"
+            }
+          ]
         }
       }
     },
@@ -4593,12 +4889,23 @@
           "type": "string"
         }
       },
-      "title": "vendor payment is currenly only used by coinbase pay guest checkout"
+      "title": "vendor payment is currently only used by coinbase pay guest checkout"
     },
     "coinbase.payments.common.payment_methods.Venue": {
       "type": "object",
       "properties": {
         "name": {
+          "type": "string"
+        }
+      }
+    },
+    "coinbase.payments.common.payment_methods.WallaceAccount": {
+      "type": "object",
+      "properties": {
+        "wallace_account_id": {
+          "type": "string"
+        },
+        "pool_name": {
           "type": "string"
         }
       }
@@ -4756,6 +5063,31 @@
       },
       "description": "Zepto account information."
     },
+    "coinbase.portfolio_service.AccountType": {
+      "type": "string",
+      "enum": [
+        "ACCOUNT_TYPE_UNKNOWN_UNSPECIFIED",
+        "ACCOUNT_TYPE_WALLET",
+        "ACCOUNT_TYPE_FIAT",
+        "ACCOUNT_TYPE_VAULT",
+        "ACCOUNT_TYPE_COLLATERAL",
+        "ACCOUNT_TYPE_DEFI_YIELD",
+        "ACCOUNT_TYPE_LOAN_MANAGEMENT",
+        "ACCOUNT_TYPE_MULTISIG",
+        "ACCOUNT_TYPE_MULTISIG_VAULT",
+        "ACCOUNT_TYPE_DERIVATIVES_TRANSFER",
+        "ACCOUNT_TYPE_DERIVATIVES_EQUITY",
+        "ACCOUNT_TYPE_STAKED_FUNDS",
+        "ACCOUNT_TYPE_PERP_FUTURES",
+        "ACCOUNT_TYPE_PERP_FUTURES_ISOLATED",
+        "ACCOUNT_TYPE_LENT_FUNDS",
+        "ACCOUNT_TYPE_PERP_FUTURES_COLLATERAL",
+        "ACCOUNT_TYPE_DERIVATIVES_CASH",
+        "ACCOUNT_TYPE_CLAWBACK_DEBT"
+      ],
+      "default": "ACCOUNT_TYPE_UNKNOWN_UNSPECIFIED",
+      "description": "AccountType defines the type of account that is supported."
+    },
     "coinbase.portfolio_service.Amount": {
       "type": "object",
       "properties": {
@@ -4789,7 +5121,8 @@
             }
           ]
         }
-      }
+      },
+      "description": "Balance pair represents balances in both native and raw underlying currency."
     },
     "coinbase.portfolio_service.FuturesPosition": {
       "type": "object",
@@ -4837,6 +5170,13 @@
         },
         "notional_value": {
           "type": "string"
+        },
+        "asset_color": {
+          "type": "string"
+        },
+        "last_traded_at": {
+          "type": "string",
+          "format": "RFC3339 Timestamp"
         }
       },
       "title": "FuturesPosition represents a futures position"
@@ -4848,7 +5188,8 @@
         "FUTURES_POSITION_SIDE_LONG",
         "FUTURES_POSITION_SIDE_SHORT"
       ],
-      "default": "FUTURES_POSITION_SIDE_UNSPECIFIED"
+      "default": "FUTURES_POSITION_SIDE_UNSPECIFIED",
+      "description": "FuturesPosition defines the side of the position."
     },
     "coinbase.portfolio_service.PerpPosition": {
       "type": "object",
@@ -4948,8 +5289,12 @@
         },
         "liquidation_percentage": {
           "type": "string"
+        },
+        "asset_color": {
+          "type": "string"
         }
-      }
+      },
+      "description": "PerpPosition defines a perpetuals position."
     },
     "coinbase.portfolio_service.Portfolio": {
       "type": "object",
@@ -4971,7 +5316,7 @@
           "type": "boolean"
         }
       },
-      "title": "Portfolio is the identifying information for a portfolio"
+      "description": "Portfolio is the identifying information for a portfolio."
     },
     "coinbase.portfolio_service.PortfolioBalances": {
       "type": "object",
@@ -5019,7 +5364,7 @@
           ]
         }
       },
-      "title": "PortfolioBalances is a summary of all balances within a given portfolio"
+      "description": "PortfolioBalances is a summary of all balances within a given portfolio."
     },
     "coinbase.portfolio_service.PortfolioBreakdown": {
       "type": "object",
@@ -5057,7 +5402,7 @@
           }
         }
       },
-      "title": "PortfolioBreakdown is a breakdown of a portfolio, all balances, and all positions within the portfolio"
+      "description": "PortfolioBreakdown is a breakdown of a portfolio, all balances, and all positions within the portfolio."
     },
     "coinbase.portfolio_service.PortfolioMarginType": {
       "type": "string",
@@ -5066,7 +5411,8 @@
         "MARGIN_TYPE_CROSS",
         "MARGIN_TYPE_ISOLATED"
       ],
-      "default": "MARGIN_TYPE_UNSPECIFIED"
+      "default": "MARGIN_TYPE_UNSPECIFIED",
+      "description": "PortfolioMarginType defines the type of margin type."
     },
     "coinbase.portfolio_service.PortfolioPosition": {
       "type": "object",
@@ -5093,10 +5439,6 @@
           "type": "number",
           "format": "float"
         },
-        "one_day_change": {
-          "type": "number",
-          "format": "float"
-        },
         "cost_basis": {
           "allOf": [
             {
@@ -5109,19 +5451,51 @@
         },
         "is_cash": {
           "type": "boolean"
+        },
+        "average_entry_price": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.portfolio_service.Amount"
+            }
+          ]
+        },
+        "asset_uuid": {
+          "type": "string"
+        },
+        "available_to_trade_crypto": {
+          "type": "number",
+          "format": "float"
+        },
+        "unrealized_pnl": {
+          "type": "number",
+          "format": "float"
+        },
+        "available_to_transfer_fiat": {
+          "type": "number",
+          "format": "float"
+        },
+        "available_to_transfer_crypto": {
+          "type": "number",
+          "format": "float"
+        },
+        "asset_color": {
+          "type": "string"
+        },
+        "account_type": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.portfolio_service.AccountType"
+            }
+          ]
         }
       },
-      "title": "PortfolioPosition represents a spot position for a user in a portfolio"
+      "description": "PortfolioPosition represents a spot position for a user in a portfolio."
     },
     "coinbase.portfolio_service.PortfolioType": {
       "type": "string",
-      "enum": [
-        "UNDEFINED",
-        "DEFAULT",
-        "CONSUMER",
-        "INTX"
-      ],
-      "default": "UNDEFINED"
+      "enum": ["UNDEFINED", "DEFAULT", "CONSUMER", "INTX"],
+      "default": "UNDEFINED",
+      "description": "PortfolioType defines the type of Portfolio."
     },
     "coinbase.public_api.authed.retail_brokerage_api.Account": {
       "type": "object",
@@ -5244,40 +5618,28 @@
           "type": "string",
           "example": "1.23",
           "description": "Amount of currency that this object represents.",
-          "required": [
-            "value"
-          ]
+          "required": ["value"]
         },
         "currency": {
           "type": "string",
           "example": "BTC",
           "description": "Denomination of the currency.",
-          "required": [
-            "currency"
-          ]
+          "required": ["currency"]
         }
       },
-      "required": [
-        "value",
-        "currency"
-      ]
+      "required": ["value", "currency"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.BestBidAskGetProductBookConfig": {
       "type": "object",
       "properties": {
         "product_ids": {
           "type": "array",
-          "example": [
-            "BTC-USD",
-            "ETH-USD"
-          ],
+          "example": ["BTC-USD", "ETH-USD"],
           "items": {
             "type": "string"
           },
           "description": "The list of trading pairs (e.g. 'BTC-USD').",
-          "required": [
-            "product_ids"
-          ]
+          "required": ["product_ids"]
         }
       }
     },
@@ -5305,15 +5667,11 @@
           "type": "boolean",
           "example": true,
           "description": "Whether the cancel request was submitted successfully.",
-          "required": [
-            "success"
-          ]
+          "required": ["success"]
         },
         "failure_reason": {
           "description": "The reason the cancel request did not get submitted",
-          "required": [
-            "failure_reason"
-          ],
+          "required": ["failure_reason"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.CancelOrderFailureReason"
@@ -5324,38 +5682,25 @@
           "type": "string",
           "example": "0000-00000",
           "description": "The ID of the order.",
-          "required": [
-            "order_id"
-          ]
+          "required": ["order_id"]
         }
       },
-      "required": [
-        "success",
-        "failure_reason",
-        "order_id"
-      ]
+      "required": ["success", "failure_reason", "order_id"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.CancelOrdersRequest": {
       "type": "object",
       "properties": {
         "order_ids": {
           "type": "array",
-          "example": [
-            "0000-00000",
-            "1111-11111"
-          ],
+          "example": ["0000-00000", "1111-11111"],
           "items": {
             "type": "string"
           },
           "description": "The order IDs that cancel requests should be initiated for.",
-          "required": [
-            "order_ids"
-          ]
+          "required": ["order_ids"]
         }
       },
-      "required": [
-        "order_ids"
-      ]
+      "required": ["order_ids"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.CancelOrdersResponse": {
       "type": "object",
@@ -5422,17 +5767,13 @@
           "type": "string",
           "example": "0000-00000-000000",
           "description": "The unique ID provided for the order (used for identification purposes).",
-          "required": [
-            "client_order_id"
-          ]
+          "required": ["client_order_id"]
         },
         "product_id": {
           "type": "string",
           "example": "BIT-28JUL23-CDE",
           "description": "The trading pair (e.g. 'BIT-28JUL23-CDE').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "size": {
           "type": "string",
@@ -5440,10 +5781,7 @@
           "description": "The amount of contracts that should be closed."
         }
       },
-      "required": [
-        "client_order_id",
-        "product_id"
-      ]
+      "required": ["client_order_id", "product_id"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.ClosePositionResponse": {
       "type": "object",
@@ -5452,9 +5790,7 @@
           "type": "boolean",
           "example": true,
           "description": "Whether the order was created.",
-          "required": [
-            "success"
-          ]
+          "required": ["success"]
         },
         "success_response": {
           "allOf": [
@@ -5479,17 +5815,11 @@
           ]
         }
       },
-      "required": [
-        "success"
-      ]
+      "required": ["success"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.ContractExpiryType": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_CONTRACT_EXPIRY_TYPE",
-        "EXPIRING",
-        "PERPETUAL"
-      ],
+      "enum": ["UNKNOWN_CONTRACT_EXPIRY_TYPE", "EXPIRING", "PERPETUAL"],
       "default": "UNKNOWN_CONTRACT_EXPIRY_TYPE"
     },
     "coinbase.public_api.authed.retail_brokerage_api.CreatePortfolioRequest": {
@@ -5565,9 +5895,7 @@
         },
         "edit_order_failure_reason": {
           "description": "The reason the order failed to be created",
-          "required": [
-            "edit_order_failure_reason"
-          ],
+          "required": ["edit_order_failure_reason"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.EditOrderFailureReason"
@@ -5603,32 +5931,22 @@
         "order_id": {
           "type": "string",
           "description": "The ID of the order.",
-          "required": [
-            "order_id"
-          ]
+          "required": ["order_id"]
         },
         "price": {
           "type": "string",
           "example": "19000.00",
           "description": "The update price of the order.",
-          "required": [
-            "price"
-          ]
+          "required": ["price"]
         },
         "size": {
           "type": "string",
           "example": "0.001",
           "description": "The updated size of the order.",
-          "required": [
-            "size"
-          ]
+          "required": ["size"]
         }
       },
-      "required": [
-        "order_id",
-        "price",
-        "size"
-      ]
+      "required": ["order_id", "price", "size"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.EditOrderResponse": {
       "type": "object",
@@ -5637,9 +5955,7 @@
           "type": "boolean",
           "example": true,
           "description": "Whether the order edit request was placed.",
-          "required": [
-            "success"
-          ]
+          "required": ["success"]
         },
         "errors": {
           "type": "array",
@@ -5648,9 +5964,7 @@
           }
         }
       },
-      "required": [
-        "success"
-      ]
+      "required": ["success"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.EditOrderSuccessResponse": {
       "type": "object",
@@ -5659,14 +5973,10 @@
           "type": "string",
           "example": "11111-00000-000000",
           "description": "The ID of the order.",
-          "required": [
-            "order_id"
-          ]
+          "required": ["order_id"]
         }
       },
-      "required": [
-        "order_id"
-      ]
+      "required": ["order_id"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.EditPortfolioRequest": {
       "type": "object",
@@ -5813,6 +6123,16 @@
           "type": "string",
           "example": "10000",
           "description": "Upper bound (exclusive) of pricing tier in usd of total assets on platform."
+        },
+        "perps_vol_from": {
+          "type": "string",
+          "example": "0",
+          "description": "Lower bound (inclusive) of pricing tier in notional volume for perpetual contracts."
+        },
+        "perps_vol_to": {
+          "type": "string",
+          "example": "10000",
+          "description": "Upper bound (exclusive) of pricing tier in notional volume for perpetual contracts."
         }
       }
     },
@@ -5997,9 +6317,7 @@
           "type": "boolean",
           "example": true,
           "description": "Whether there are additional pages for this query.",
-          "required": [
-            "has_next"
-          ]
+          "required": ["has_next"]
         },
         "cursor": {
           "type": "string",
@@ -6012,9 +6330,7 @@
           "description": "Number of accounts returned"
         }
       },
-      "required": [
-        "has_next"
-      ]
+      "required": ["has_next"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetBestBidAskResponse": {
       "type": "object",
@@ -6024,14 +6340,10 @@
           "items": {
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.PriceBook"
           },
-          "required": [
-            "pricebooks"
-          ]
+          "required": ["pricebooks"]
         }
       },
-      "required": [
-        "pricebooks"
-      ]
+      "required": ["pricebooks"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetCandlesResponse": {
       "type": "object",
@@ -6047,11 +6359,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetFillsRequest.FillsSortBy": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_SORT_BY",
-        "PRICE",
-        "TRADE_TIME"
-      ],
+      "enum": ["UNKNOWN_SORT_BY", "PRICE", "TRADE_TIME"],
       "default": "UNKNOWN_SORT_BY"
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetFillsResponse": {
@@ -6086,11 +6394,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetHistoricalOrdersRequest.HistoricalOrdersSortBy": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_SORT_BY",
-        "LIMIT_PRICE",
-        "LAST_FILL_TIME"
-      ],
+      "enum": ["UNKNOWN_SORT_BY", "LIMIT_PRICE", "LAST_FILL_TIME"],
       "default": "UNKNOWN_SORT_BY"
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetHistoricalOrdersResponse": {
@@ -6102,9 +6406,7 @@
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.Order"
           },
           "description": "A list of orders matching the query.",
-          "required": [
-            "orders"
-          ]
+          "required": ["orders"]
         },
         "sequence": {
           "type": "string",
@@ -6115,9 +6417,7 @@
           "type": "boolean",
           "example": true,
           "description": "Whether there are additional pages for this query.",
-          "required": [
-            "has_next"
-          ]
+          "required": ["has_next"]
         },
         "cursor": {
           "type": "string",
@@ -6125,10 +6425,7 @@
           "description": "For paginated responses, returns all responses that come after this value."
         }
       },
-      "required": [
-        "orders",
-        "has_next"
-      ]
+      "required": ["orders", "has_next"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetMarketTradesResponse": {
       "type": "object",
@@ -6178,9 +6475,7 @@
       "type": "object",
       "properties": {
         "pricebook": {
-          "required": [
-            "pricebook"
-          ],
+          "required": ["pricebook"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.PriceBook"
@@ -6200,9 +6495,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "pricebook"
-      ]
+      "required": ["pricebook"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.GetProductResponse": {
       "type": "object",
@@ -6236,24 +6529,18 @@
           "format": "double",
           "example": 1000,
           "description": "Total volume across assets, denoted in USD.",
-          "required": [
-            "total_volume"
-          ]
+          "required": ["total_volume"]
         },
         "total_fees": {
           "type": "number",
           "format": "double",
           "example": 25,
           "description": "Total fees across assets, denoted in USD.",
-          "required": [
-            "total_fees"
-          ]
+          "required": ["total_fees"]
         },
         "fee_tier": {
           "description": "Description of maker and taker rates across all applicable fee tiers.",
-          "required": [
-            "fee_tier"
-          ],
+          "required": ["fee_tier"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.FeeTier"
@@ -6306,11 +6593,7 @@
           "description": "Total balance across assets and products, which is comprised of the sum of spot, intx, and fcm, and denoted in USD."
         }
       },
-      "required": [
-        "total_volume",
-        "total_fees",
-        "fee_tier"
-      ]
+      "required": ["total_volume", "total_fees", "fee_tier"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.GoodsAndServicesTax": {
       "type": "object",
@@ -6344,10 +6627,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.GstType": {
       "type": "string",
-      "enum": [
-        "INCLUSIVE",
-        "EXCLUSIVE"
-      ],
+      "enum": ["INCLUSIVE", "EXCLUSIVE"],
       "default": "INCLUSIVE",
       "title": "- INCLUSIVE: inclusive means the `feeTier`` is inclusive of the GST (e.g SG)\n - EXCLUSIVE: exclusive means the `feeTier`` is exclusive of the GST (e.g AU)"
     },
@@ -6408,6 +6688,11 @@
     "coinbase.public_api.authed.retail_brokerage_api.LimitLimitFok": {
       "type": "object",
       "properties": {
+        "quote_size": {
+          "type": "string",
+          "example": "10.00",
+          "description": "The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset."
+        },
         "base_size": {
           "type": "string",
           "example": "0.001",
@@ -6423,6 +6708,11 @@
     "coinbase.public_api.authed.retail_brokerage_api.LimitLimitGtc": {
       "type": "object",
       "properties": {
+        "quote_size": {
+          "type": "string",
+          "example": "10.00",
+          "description": "The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset."
+        },
         "base_size": {
           "type": "string",
           "example": "0.001",
@@ -6443,6 +6733,11 @@
     "coinbase.public_api.authed.retail_brokerage_api.LimitLimitGtd": {
       "type": "object",
       "properties": {
+        "quote_size": {
+          "type": "string",
+          "example": "10.00",
+          "description": "The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset."
+        },
         "base_size": {
           "type": "string",
           "example": "0.001",
@@ -6494,19 +6789,12 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.LiquidityIndicator": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_LIQUIDITY_INDICATOR",
-        "MAKER",
-        "TAKER"
-      ],
+      "enum": ["UNKNOWN_LIQUIDITY_INDICATOR", "MAKER", "TAKER"],
       "default": "UNKNOWN_LIQUIDITY_INDICATOR"
     },
     "coinbase.public_api.authed.retail_brokerage_api.MarginType": {
       "type": "string",
-      "enum": [
-        "CROSS",
-        "ISOLATED"
-      ],
+      "enum": ["CROSS", "ISOLATED"],
       "default": "",
       "description": "- CROSS: Cross margin applies margin to the position of the entire portfolio\n - ISOLATED: Isolated margin applies margin to a single position",
       "title": "MarginType reflects the margin type of an order, used for Intx Perps trades"
@@ -6599,9 +6887,7 @@
         },
         "new_order_failure_reason": {
           "description": "The reason the order failed to be created",
-          "required": [
-            "new_order_failure_reason"
-          ],
+          "required": ["new_order_failure_reason"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.NewOrderFailureReason"
@@ -6657,7 +6943,10 @@
         "INVALID_ATTACHED_TAKE_PROFIT_PRICE_PRECISION",
         "INVALID_ATTACHED_STOP_LOSS_PRICE_PRECISION",
         "INVALID_ATTACHED_TAKE_PROFIT_PRICE_OUT_OF_BOUNDS",
-        "INVALID_ATTACHED_STOP_LOSS_PRICE_OUT_OF_BOUNDS"
+        "INVALID_ATTACHED_STOP_LOSS_PRICE_OUT_OF_BOUNDS",
+        "INVALID_ATTACHED_TAKE_PROFIT_PRICE_EXCEEDS_MAX_DISTANCE_FROM_ORIGINATING_PRICE",
+        "INVALID_ATTACHED_TAKE_PROFIT_SIZE_BELOW_MIN",
+        "ATTACHED_ORDER_SIZE_MUST_BE_NIL"
       ],
       "default": "UNKNOWN_FAILURE_REASON"
     },
@@ -6668,23 +6957,17 @@
           "type": "string",
           "example": "0000-00000-000000",
           "description": "A unique ID provided for the order (used for identification purposes). If the ID provided is not unique, the order will not be created and the order corresponding with that ID will be returned instead.",
-          "required": [
-            "client_order_id"
-          ]
+          "required": ["client_order_id"]
         },
         "product_id": {
           "type": "string",
           "example": "BTC-USD",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "side": {
           "description": "The side of the market that the order is on (e.g. 'BUY', 'SELL').",
-          "required": [
-            "side"
-          ],
+          "required": ["side"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderSide"
@@ -6693,9 +6976,7 @@
         },
         "order_configuration": {
           "description": "The configuration of the order (e.g. the order type, size, etc).",
-          "required": [
-            "order_configuration"
-          ],
+          "required": ["order_configuration"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
@@ -6724,6 +7005,14 @@
           "type": "string",
           "example": "b40bbff9-17ce-4726-8b64-9de7ae57ad26",
           "description": "Preview ID for this order, to associate this order with a preview request"
+        },
+        "attached_order_configuration": {
+          "description": "The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the parent order.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
+            }
+          ]
         }
       },
       "required": [
@@ -6740,9 +7029,7 @@
           "type": "boolean",
           "example": true,
           "description": "Whether the order was created.",
-          "required": [
-            "success"
-          ]
+          "required": ["success"]
         },
         "success_response": {
           "allOf": [
@@ -6767,9 +7054,7 @@
           ]
         }
       },
-      "required": [
-        "success"
-      ]
+      "required": ["success"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.NewOrderSuccessResponse": {
       "type": "object",
@@ -6778,9 +7063,7 @@
           "type": "string",
           "example": "11111-00000-000000",
           "description": "The ID of the order.",
-          "required": [
-            "order_id"
-          ]
+          "required": ["order_id"]
         },
         "product_id": {
           "type": "string",
@@ -6801,9 +7084,7 @@
           "description": "The unique ID provided for the order (used for identification purposes)."
         }
       },
-      "required": [
-        "order_id"
-      ]
+      "required": ["order_id"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.Order": {
       "type": "object",
@@ -6812,31 +7093,23 @@
           "type": "string",
           "example": "0000-000000-000000",
           "description": "The ID of the order.",
-          "required": [
-            "order_id"
-          ]
+          "required": ["order_id"]
         },
         "product_id": {
           "type": "string",
           "example": "BTC-USD",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "user_id": {
           "type": "string",
           "example": "2222-000000-000000",
           "description": "The id of the User owning this Order",
-          "required": [
-            "user_id"
-          ]
+          "required": ["user_id"]
         },
         "order_configuration": {
           "description": "The configuration of the order (e.g. the order type, size, etc).",
-          "required": [
-            "order_configuration"
-          ],
+          "required": ["order_configuration"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
@@ -6845,9 +7118,7 @@
         },
         "side": {
           "description": "The side of the market that the order is on (e.g. 'BUY', 'SELL').",
-          "required": [
-            "side"
-          ],
+          "required": ["side"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderSide"
@@ -6858,15 +7129,11 @@
           "type": "string",
           "example": "11111-000000-000000",
           "description": "The unique ID provided for the order (used for identification purposes).",
-          "required": [
-            "client_order_id"
-          ]
+          "required": ["client_order_id"]
         },
         "status": {
           "description": "The current state of the order",
-          "required": [
-            "status"
-          ],
+          "required": ["status"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderExecutionStatus"
@@ -6886,17 +7153,13 @@
           "format": "RFC3339 Timestamp",
           "example": "2021-05-31T09:59:59Z",
           "description": "Timestamp for when the order was created",
-          "required": [
-            "created_time"
-          ]
+          "required": ["created_time"]
         },
         "completion_percentage": {
           "type": "string",
           "example": "50",
           "description": "The percent of total order amount that has been filled",
-          "required": [
-            "completion_percentage"
-          ]
+          "required": ["completion_percentage"]
         },
         "filled_size": {
           "type": "string",
@@ -6907,9 +7170,7 @@
           "type": "string",
           "example": "50",
           "description": "The average of all prices of fills for this order",
-          "required": [
-            "average_filled_price"
-          ]
+          "required": ["average_filled_price"]
         },
         "fee": {
           "type": "string",
@@ -6919,9 +7180,7 @@
           "type": "string",
           "example": "2",
           "description": "Number of fills that have been posted for this order",
-          "required": [
-            "number_of_fills"
-          ]
+          "required": ["number_of_fills"]
         },
         "filled_value": {
           "type": "string",
@@ -6932,40 +7191,30 @@
           "type": "boolean",
           "example": true,
           "description": "Whether a cancel request has been initiated for the order, and not yet completed",
-          "required": [
-            "pending_cancel"
-          ]
+          "required": ["pending_cancel"]
         },
         "size_in_quote": {
           "type": "boolean",
           "example": false,
           "description": "Whether the order was placed with quote currency",
-          "required": [
-            "size_in_quote"
-          ]
+          "required": ["size_in_quote"]
         },
         "total_fees": {
           "type": "string",
           "example": "5.00",
           "description": "The total fees for the order",
-          "required": [
-            "total_fees"
-          ]
+          "required": ["total_fees"]
         },
         "size_inclusive_of_fees": {
           "type": "boolean",
           "example": false,
           "description": "Whether the order size includes fees",
-          "required": [
-            "size_inclusive_of_fees"
-          ]
+          "required": ["size_inclusive_of_fees"]
         },
         "total_value_after_fees": {
           "type": "string",
           "description": "derived field: filled_value + total_fees for buy orders and filled_value - total_fees for sell orders.",
-          "required": [
-            "total_value_after_fees"
-          ]
+          "required": ["total_value_after_fees"]
         },
         "trigger_status": {
           "description": "The trigger status of the order, with respect to stop price.",
@@ -7055,6 +7304,24 @@
           "type": "string",
           "example": "b87a2d3f-8a1e-49b3-a4ea-402d8c389aca",
           "description": "The ID of the portfolio this order is associated with."
+        },
+        "originating_order_id": {
+          "type": "string",
+          "example": "b87a2d3f-8a1e-49b3-a4ea-402d8c389aca",
+          "description": "The ID of the parent order of an attached order."
+        },
+        "attached_order_id": {
+          "type": "string",
+          "example": "b87a2d3f-8a1e-49b3-a4ea-402d8c389aca",
+          "description": "The ID of the attached order of a parent order."
+        },
+        "attached_order_configuration": {
+          "description": "The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the originating or parent order.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
+            }
+          ]
         }
       },
       "required": [
@@ -7119,6 +7386,14 @@
             }
           ]
         },
+        "twap_limit_gtd": {
+          "description": "A time-weighted average price (TWAP) order type that calculates the average price of a product to programmatically execute an order over a specified duration.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.TwapLimitGtd"
+            }
+          ]
+        },
         "stop_limit_stop_limit_gtc": {
           "description": "Posts an Order to buy or sell a specified quantity of an Asset, but only if and when the last trade price on the Order Book equals or surpasses the Stop Price. If posted, the Order will remain on the Order Book until canceled. [Read more on Stop-Limit Orders.](https://help.coinbase.com/en/coinbase/trading-and-funding/advanced-trade/order-types#stop-limit-order)",
           "allOf": [
@@ -7170,11 +7445,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.OrderPlacementSource": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_PLACEMENT_SOURCE",
-        "RETAIL_SIMPLE",
-        "RETAIL_ADVANCED"
-      ],
+      "enum": ["UNKNOWN_PLACEMENT_SOURCE", "RETAIL_SIMPLE", "RETAIL_ADVANCED"],
       "default": "UNKNOWN_PLACEMENT_SOURCE",
       "title": "OrderPlacementSource reflects which source an order was placed from"
     },
@@ -7184,15 +7455,11 @@
         "product_id": {
           "type": "string",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "side": {
           "description": "The side of the market that the order is on (e.g. 'BUY', 'SELL').",
-          "required": [
-            "side"
-          ],
+          "required": ["side"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderSide"
@@ -7201,9 +7468,7 @@
         },
         "order_configuration": {
           "description": "The configuration of the order (e.g. the order type, size, etc).",
-          "required": [
-            "order_configuration"
-          ],
+          "required": ["order_configuration"],
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
@@ -7227,6 +7492,14 @@
           "type": "string",
           "example": "11111111-1111-1111-1111-111111111111",
           "description": "**(Deprecated)** The ID of the portfolio to associate the order with. Only applicable for legacy keys. CDP keys will default to the key's permissioned portfolio."
+        },
+        "attached_order_configuration": {
+          "description": "The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the parent order.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.OrderConfiguration"
+            }
+          ]
         }
       },
       "title": "OrderPreview",
@@ -7242,16 +7515,12 @@
       "properties": {
         "order_total": {
           "type": "string",
-          "required": [
-            "order_total"
-          ]
+          "required": ["order_total"]
         },
         "commission_total": {
           "type": "string",
           "description": "Currency amount of the applied commission (so not the rate that was used on input)",
-          "required": [
-            "commission_total"
-          ]
+          "required": ["commission_total"]
         },
         "errs": {
           "type": "array",
@@ -7259,53 +7528,39 @@
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.PreviewFailureReason"
           },
           "description": "List of potential failure reasons were this order to be submitted",
-          "required": [
-            "errs"
-          ]
+          "required": ["errs"]
         },
         "warning": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.PreviewWarningMsg"
           },
-          "required": [
-            "warning"
-          ]
+          "required": ["warning"]
         },
         "quote_size": {
           "type": "string",
           "example": 10.0,
           "description": "The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset.",
-          "required": [
-            "quote_size"
-          ]
+          "required": ["quote_size"]
         },
         "base_size": {
           "type": "string",
           "example": 0.001,
           "description": "The amount of the first Asset in the Trading Pair. For example, on the BTC-USD Order Book, BTC is the Base Asset.",
-          "required": [
-            "base_size"
-          ]
+          "required": ["base_size"]
         },
         "best_bid": {
           "type": "string",
-          "required": [
-            "best_bid"
-          ]
+          "required": ["best_bid"]
         },
         "best_ask": {
           "type": "string",
-          "required": [
-            "best_ask"
-          ]
+          "required": ["best_ask"]
         },
         "is_max": {
           "type": "boolean",
           "description": "Indicates whether tradable_balance should be set to the maximum amount.",
-          "required": [
-            "is_max"
-          ]
+          "required": ["is_max"]
         },
         "order_margin_total": {
           "type": "string"
@@ -7335,6 +7590,24 @@
         },
         "max_leverage": {
           "type": "string"
+        },
+        "pnl_configuration": {
+          "description": "Expected PNL of an order. This value is an estimate and does not take into account fees and slippage.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.PnlConfiguration"
+            }
+          ]
+        },
+        "twap_bucket_metadata": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.TwapBucketMetadata"
+            }
+          ]
+        },
+        "position_notional_limit": {
+          "type": "string"
         }
       },
       "required": [
@@ -7351,10 +7624,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.OrderSide": {
       "type": "string",
-      "enum": [
-        "BUY",
-        "SELL"
-      ],
+      "enum": ["BUY", "SELL"],
       "default": ""
     },
     "coinbase.public_api.authed.retail_brokerage_api.OrderType": {
@@ -7365,10 +7635,11 @@
         "LIMIT",
         "STOP",
         "STOP_LIMIT",
-        "BRACKET"
+        "BRACKET",
+        "TWAP"
       ],
       "default": "UNKNOWN_ORDER_TYPE",
-      "description": " - MARKET: A [market order](https://en.wikipedia.org/wiki/Order_(exchange)#Market_order)\n - LIMIT: A [limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order)\n - STOP: A stop order is an order that becomes a market order when triggered\n - STOP_LIMIT: A stop order is a limit order that doesn't go on the book until it hits the stop price\n - BRACKET: A bracket order is a way to mitigate potential losses in volatile markets, consisting of a limit price leg and a stop trigger price. Note: Bracket orders are currently in closed beta and may be disabled to resolve issues during testing. Stay tuned for the public release coming soon."
+      "title": "- MARKET: A [market order](https://en.wikipedia.org/wiki/Order_(exchange)#Market_order)\n - LIMIT: A [limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order)\n - STOP: A stop order is an order that becomes a market order when triggered\n - STOP_LIMIT: A stop order is a limit order that doesn't go on the book until it hits the stop price\n - BRACKET: A bracket order is a way to mitigate potential losses in volatile markets, consisting of a limit price leg and a stop trigger price.\n - TWAP: TWAP order is a way to split large buy/sell orders to smaller chunks to reduce market impact"
     },
     "coinbase.public_api.authed.retail_brokerage_api.PerpetualProductDetails": {
       "type": "object",
@@ -7398,6 +7669,7 @@
       "type": "object",
       "properties": {
         "trigger_bracket_pnl": {
+          "description": "PNL configuration for a bracket order.",
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.TriggerBracketPnl"
@@ -7414,9 +7686,7 @@
           "items": {
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.EditOrderError"
           },
-          "required": [
-            "errors"
-          ]
+          "required": ["errors"]
         },
         "slippage": {
           "type": "string"
@@ -7447,9 +7717,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "errors"
-      ]
+      "required": ["errors"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.PreviewFailureReason": {
       "type": "string",
@@ -7527,17 +7795,17 @@
         "PREVIEW_BRACKET_ORDER_SIZE_EXCEEDS_POSITION",
         "PREVIEW_ORDER_SIZE_EXCEEDS_BRACKETED_POSITION",
         "PREVIEW_INVALID_LIMIT_PRICE_PRECISION",
-        "PREVIEW_INVALID_STOP_TRIGGER_PRICE_PRECISION"
+        "PREVIEW_INVALID_STOP_TRIGGER_PRICE_PRECISION",
+        "PREVIEW_INVALID_ATTACHED_TAKE_PROFIT_PRICE_EXCEEDS_MAX_DISTANCE_FROM_ORIGINATING_PRICE",
+        "PREVIEW_INVALID_ATTACHED_TAKE_PROFIT_SIZE_BELOW_MIN",
+        "PREVIEW_ATTACHED_ORDER_SIZE_MUST_BE_NIL",
+        "PREVIEW_BELOW_MIN_SIZE_FOR_DURATION"
       ],
       "default": "UNKNOWN_PREVIEW_FAILURE_REASON"
     },
     "coinbase.public_api.authed.retail_brokerage_api.PreviewWarningMsg": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "BIG_ORDER",
-        "SMALL_ORDER"
-      ],
+      "enum": ["UNKNOWN", "BIG_ORDER", "SMALL_ORDER"],
       "default": "UNKNOWN"
     },
     "coinbase.public_api.authed.retail_brokerage_api.PriceBook": {
@@ -7547,38 +7815,28 @@
           "type": "string",
           "example": "BTC-USD",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "bids": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.L2Level"
           },
-          "required": [
-            "bids"
-          ]
+          "required": ["bids"]
         },
         "asks": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/coinbase.public_api.authed.retail_brokerage_api.L2Level"
           },
-          "required": [
-            "asks"
-          ]
+          "required": ["asks"]
         },
         "time": {
           "type": "string",
           "format": "RFC3339 Timestamp"
         }
       },
-      "required": [
-        "product_id",
-        "bids",
-        "asks"
-      ]
+      "required": ["product_id", "bids", "asks"]
     },
     "coinbase.public_api.authed.retail_brokerage_api.Product": {
       "type": "object",
@@ -7587,176 +7845,132 @@
           "type": "string",
           "example": "BTC-USD",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "price": {
           "type": "string",
           "example": "140.21",
           "description": "The current price for the product, in quote currency.",
-          "required": [
-            "price"
-          ]
+          "required": ["price"]
         },
         "price_percentage_change_24h": {
           "type": "string",
           "example": "9.43%",
           "description": "The amount the price of the product has changed, in percent, in the last 24 hours.",
-          "required": [
-            "price_percentage_change_24h"
-          ]
+          "required": ["price_percentage_change_24h"]
         },
         "volume_24h": {
           "type": "string",
           "example": "1908432",
           "description": "The trading volume for the product in the last 24 hours.",
-          "required": [
-            "volume_24h"
-          ]
+          "required": ["volume_24h"]
         },
         "volume_percentage_change_24h": {
           "type": "string",
           "example": "9.43%",
           "description": "The amount the volume of the product has changed, in percent, in the last 24 hours.",
-          "required": [
-            "volume_percentage_change_24h"
-          ]
+          "required": ["volume_percentage_change_24h"]
         },
         "base_increment": {
           "type": "string",
           "example": "0.00000001",
           "description": "Minimum amount base value can be increased or decreased at once.",
-          "required": [
-            "base_increment"
-          ]
+          "required": ["base_increment"]
         },
         "quote_increment": {
           "type": "string",
           "example": "0.00000001",
           "description": "Minimum amount quote value can be increased or decreased at once.",
-          "required": [
-            "quote_increment"
-          ]
+          "required": ["quote_increment"]
         },
         "quote_min_size": {
           "type": "string",
           "example": "0.00000001",
           "description": "Minimum size that can be represented of quote currency.",
-          "required": [
-            "quote_min_size"
-          ]
+          "required": ["quote_min_size"]
         },
         "quote_max_size": {
           "type": "string",
           "example": "1000",
           "description": "Maximum size that can be represented of quote currency.",
-          "required": [
-            "quote_max_size"
-          ]
+          "required": ["quote_max_size"]
         },
         "base_min_size": {
           "type": "string",
           "example": "0.00000001",
           "description": "Minimum size that can be represented of base currency.",
-          "required": [
-            "base_min_size"
-          ]
+          "required": ["base_min_size"]
         },
         "base_max_size": {
           "type": "string",
           "example": "1000",
           "description": "Maximum size that can be represented of base currency.",
-          "required": [
-            "base_max_size"
-          ]
+          "required": ["base_max_size"]
         },
         "base_name": {
           "type": "string",
           "example": "Bitcoin",
           "description": "Name of the base currency.",
-          "required": [
-            "base_name"
-          ]
+          "required": ["base_name"]
         },
         "quote_name": {
           "type": "string",
           "example": "US Dollar",
           "description": "Name of the quote currency.",
-          "required": [
-            "quote_name"
-          ]
+          "required": ["quote_name"]
         },
         "watched": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not the product is on the user's watchlist.",
-          "required": [
-            "watched"
-          ]
+          "required": ["watched"]
         },
         "is_disabled": {
           "type": "boolean",
           "example": false,
           "description": "Whether or not the product is disabled for trading.",
-          "required": [
-            "is_disabled"
-          ]
+          "required": ["is_disabled"]
         },
         "new": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not the product is 'new'.",
-          "required": [
-            "new"
-          ]
+          "required": ["new"]
         },
         "status": {
           "type": "string",
           "description": "Status of the product.",
-          "required": [
-            "status"
-          ]
+          "required": ["status"]
         },
         "cancel_only": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not orders of the product can only be cancelled, not placed or edited.",
-          "required": [
-            "cancel_only"
-          ]
+          "required": ["cancel_only"]
         },
         "limit_only": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not orders of the product can only be limit orders, not market orders.",
-          "required": [
-            "limit_only"
-          ]
+          "required": ["limit_only"]
         },
         "post_only": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not orders of the product can only be posted, not cancelled.",
-          "required": [
-            "post_only"
-          ]
+          "required": ["post_only"]
         },
         "trading_disabled": {
           "type": "boolean",
           "example": false,
           "description": "Whether or not the product is disabled for trading for all market participants.",
-          "required": [
-            "trading_disabled"
-          ]
+          "required": ["trading_disabled"]
         },
         "auction_mode": {
           "type": "boolean",
           "example": true,
           "description": "Whether or not the product is in auction mode.",
-          "required": [
-            "auction_mode"
-          ]
+          "required": ["auction_mode"]
         },
         "product_type": {
           "description": "Type of the product.",
@@ -7795,9 +8009,7 @@
         },
         "alias_to": {
           "type": "array",
-          "example": [
-            "BTC-USDC"
-          ],
+          "example": ["BTC-USDC"],
           "items": {
             "type": "string"
           },
@@ -7807,17 +8019,13 @@
           "type": "string",
           "example": "BTC",
           "description": "Symbol of the base display currency.",
-          "required": [
-            "base_display_symbol"
-          ]
+          "required": ["base_display_symbol"]
         },
         "quote_display_symbol": {
           "type": "string",
           "example": "USD",
           "description": "Symbol of the quote display currency.",
-          "required": [
-            "quote_display_symbol"
-          ]
+          "required": ["quote_display_symbol"]
         },
         "view_only": {
           "type": "boolean",
@@ -7847,6 +8055,12 @@
           "type": "string",
           "example": "1908432",
           "description": "The approximate trading volume for the product in the last 24 hours based on the current quote."
+        },
+        "new_at": {
+          "type": "string",
+          "format": "RFC3339 Timestamp",
+          "example": "2021-07-01T00:00:00Z",
+          "description": "The timestamp when the product was listed. This is only populated if product has new tag."
         },
         "future_product_details": {
           "allOf": [
@@ -7886,21 +8100,12 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.ProductType": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_PRODUCT_TYPE",
-        "SPOT",
-        "FUTURE"
-      ],
+      "enum": ["UNKNOWN_PRODUCT_TYPE", "SPOT", "FUTURE"],
       "default": "UNKNOWN_PRODUCT_TYPE"
     },
     "coinbase.public_api.authed.retail_brokerage_api.ProductVenue": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_VENUE_TYPE",
-        "CBE",
-        "FCM",
-        "INTX"
-      ],
+      "enum": ["UNKNOWN_VENUE_TYPE", "CBE", "FCM", "INTX"],
       "default": "UNKNOWN_VENUE_TYPE"
     },
     "coinbase.public_api.authed.retail_brokerage_api.Products": {
@@ -7920,6 +8125,15 @@
           "description": "Number of products that were returned."
         }
       }
+    },
+    "coinbase.public_api.authed.retail_brokerage_api.ProductsSortOrder": {
+      "type": "string",
+      "enum": [
+        "PRODUCTS_SORT_ORDER_UNDEFINED",
+        "PRODUCTS_SORT_ORDER_VOLUME_24H_DESCENDING",
+        "PRODUCTS_SORT_ORDER_LIST_TIME_DESCENDING"
+      ],
+      "default": "PRODUCTS_SORT_ORDER_UNDEFINED"
     },
     "coinbase.public_api.authed.retail_brokerage_api.RejectReason": {
       "type": "string",
@@ -7941,6 +8155,18 @@
       ],
       "default": "UNKNOWN_RISK_MANAGEMENT_TYPE"
     },
+    "coinbase.public_api.authed.retail_brokerage_api.RollingMarketGtc": {
+      "type": "object",
+      "properties": {
+        "base_size": {
+          "type": "string"
+        },
+        "close_only": {
+          "type": "boolean"
+        }
+      },
+      "title": "RollingMarketGtc order type for user contract rolls"
+    },
     "coinbase.public_api.authed.retail_brokerage_api.SingleProductGetProductBookConfig": {
       "type": "object",
       "properties": {
@@ -7948,9 +8174,7 @@
           "type": "string",
           "example": "BTC-USD",
           "description": "The trading pair (e.g. 'BTC-USD').",
-          "required": [
-            "product_id"
-          ]
+          "required": ["product_id"]
         },
         "limit": {
           "type": "integer",
@@ -7963,6 +8187,11 @@
     "coinbase.public_api.authed.retail_brokerage_api.SorLimitIoc": {
       "type": "object",
       "properties": {
+        "quote_size": {
+          "type": "string",
+          "example": "10.00",
+          "description": "The amount of the second Asset in the Trading Pair. For example, on the BTC/USD Order Book, USD is the Quote Asset."
+        },
         "base_size": {
           "type": "string",
           "example": "0.001",
@@ -8041,10 +8270,7 @@
     },
     "coinbase.public_api.authed.retail_brokerage_api.StopPriceDirection": {
       "type": "string",
-      "enum": [
-        "STOP_DIRECTION_STOP_UP",
-        "STOP_DIRECTION_STOP_DOWN"
-      ],
+      "enum": ["STOP_DIRECTION_STOP_UP", "STOP_DIRECTION_STOP_DOWN"],
       "default": "",
       "title": "- STOP_DIRECTION_STOP_UP: Order will trigger if the last trade price goes above the stop price\n - STOP_DIRECTION_STOP_DOWN: Order will trigger if the last trade price goes below the stop price"
     },
@@ -8120,13 +8346,30 @@
       "type": "object",
       "properties": {
         "take_profit_pnl": {
-          "type": "string"
+          "type": "string",
+          "description": "PNL if an attached order fills at the take profit price."
         },
         "stop_loss_pnl": {
-          "type": "string"
+          "type": "string",
+          "description": "PNL if an attached order fills at the stop loss price"
         }
       },
       "title": "PNL Configurations"
+    },
+    "coinbase.public_api.authed.retail_brokerage_api.TwapBucketMetadata": {
+      "type": "object",
+      "properties": {
+        "bucket_duration": {
+          "type": "string"
+        },
+        "bucket_size": {
+          "type": "string"
+        },
+        "number_buckets": {
+          "type": "string"
+        }
+      },
+      "title": "Twap bucket metadata - size/duration of each suborder into which twap is broken into"
     },
     "coinbase.public_api.authed.retail_brokerage_api.TwapLimitGtd": {
       "type": "object",
@@ -8157,6 +8400,21 @@
           "type": "string",
           "example": "10000.00",
           "description": "The specified price, or better, that the Order should be executed at. A Buy Order will execute at or lower than the limit price. A Sell Order will execute at or higher than the limit price."
+        },
+        "number_buckets": {
+          "type": "string",
+          "example": "5",
+          "description": "The number of smaller buckets/suborders over which the entire order will be broken into. Each suborder will be executed over a duration calculated based on the end_time"
+        },
+        "bucket_size": {
+          "type": "string",
+          "example": "2.00",
+          "description": "The size of each suborder. bucket_size multiplied by number_buckets should match the size of the entire twap order)"
+        },
+        "bucket_duration": {
+          "type": "string",
+          "example": "300s",
+          "description": "The duration over which each sub order was executed"
         }
       }
     },
@@ -8573,11 +8831,7 @@
     },
     "coinbase.retail.rest.proxy.fcm.FCMPositionSide": {
       "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "LONG",
-        "SHORT"
-      ],
+      "enum": ["UNKNOWN", "LONG", "SHORT"],
       "default": "UNKNOWN"
     },
     "coinbase.retail.rest.proxy.fcm.FCMSweep": {
@@ -8616,11 +8870,7 @@
     },
     "coinbase.retail.rest.proxy.fcm.FCMSweepStatus": {
       "type": "string",
-      "enum": [
-        "UNKNOWN_FCM_SWEEP_STATUS",
-        "PENDING",
-        "PROCESSING"
-      ],
+      "enum": ["UNKNOWN_FCM_SWEEP_STATUS", "PENDING", "PROCESSING"],
       "default": "UNKNOWN_FCM_SWEEP_STATUS"
     },
     "coinbase.retail.rest.proxy.fcm.FcmMarginWindowMeasure": {
@@ -8989,7 +9239,7 @@
         },
         "borrow": {
           "type": "string",
-          "description": "Total borrow amount in USDC (nets the USDC balance, position PNL, held USDC, accured interest and rolling debt)"
+          "description": "Total borrow amount in USDC (nets the USDC balance, position PNL, held USDC, accrued interest and rolling debt)"
         },
         "accrued_interest": {
           "type": "string",
@@ -9384,6 +9634,16 @@
               "$ref": "#/definitions/coinbase.simple_trade.ErrorCta"
             }
           ]
+        },
+        "error_metadata": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.simple_trade.ErrorMetadata"
+            }
+          ]
+        },
+        "title": {
+          "type": "string"
         }
       },
       "description": "these are errors which prevent us from creating trades. Ie, BlackListed card",
@@ -9411,7 +9671,11 @@
         "ERROR_CODES_ADDRESS_MISMATCH",
         "ERROR_CODES_TRANSACTION_NOT_ALLOWED",
         "DEPOSIT_NOT_AUTHORIZED",
-        "PLAID_INSUFFICIENT_FUNDS"
+        "PLAID_INSUFFICIENT_FUNDS",
+        "ERROR_CODES_LIMIT_ERROR_IDV_MISSING",
+        "ERROR_CODES_PAYMENT_REJECTED_BY_PROVIDER",
+        "ERROR_CODES_MISSING_3DS_AUTHENTICATION",
+        "ERROR_CODES_AUTH_OR_WITHDRAWAL_LIMIT"
       ],
       "default": "ERROR_CODES_UNSPECIFIED",
       "description": "",
@@ -9427,10 +9691,24 @@
         "ERROR_CTA_SELL_MINIMUM",
         "ERROR_CTA_SELL_ALL",
         "ERROR_CTA_SWITCH_PAYMENT",
-        "ERROR_CTA_SELL_MAXIMUM"
+        "ERROR_CTA_SELL_MAXIMUM",
+        "ERROR_CTA_MAINTENANCE"
       ],
       "default": "ERROR_CTA_UNSPECIFIED",
       "title": "ErrorCta"
+    },
+    "coinbase.simple_trade.ErrorMetadata": {
+      "type": "object",
+      "properties": {
+        "limit_amount": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.consumer.shared.common.Amount"
+            }
+          ]
+        }
+      },
+      "title": "ErrorMetadata represents error metadata. ie: limit amount either from insufficient fund or payment method limit"
     },
     "coinbase.simple_trade.Fee": {
       "type": "object",
@@ -9455,6 +9733,13 @@
           "allOf": [
             {
               "$ref": "#/definitions/coinbase.simple_trade.Disclosure"
+            }
+          ]
+        },
+        "waived_details": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.simple_trade.WaivedDetails"
             }
           ]
         }
@@ -9673,6 +9958,37 @@
         }
       },
       "title": "UserWarningContext provides details into the user warning. Used for certain payment warnings"
+    },
+    "coinbase.simple_trade.WaivedDetails": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.consumer.shared.common.Amount"
+            }
+          ]
+        },
+        "source": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/coinbase.simple_trade.WaivedFeeSource"
+            }
+          ]
+        }
+      },
+      "title": "WaivedDetails contains details when the fee is waived"
+    },
+    "coinbase.simple_trade.WaivedFeeSource": {
+      "type": "string",
+      "enum": [
+        "WAIVED_FEE_SOURCE_UNSPECIFIED",
+        "WAIVED_FEE_SOURCE_TRADE_INCENTIVE",
+        "WAIVED_FEE_SOURCE_COINBASE_ONE",
+        "WAIVED_FEE_SOURCE_FEE_REDUCTION_BADGE",
+        "WAIVED_FEE_SOURCE_TRADE_PROMOTION"
+      ],
+      "default": "WAIVED_FEE_SOURCE_UNSPECIFIED"
     },
     "google.protobuf.Any": {
       "type": "object",

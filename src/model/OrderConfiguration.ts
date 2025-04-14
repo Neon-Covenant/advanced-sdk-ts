@@ -27,6 +27,7 @@ import { StopLimitStopLimitGtc } from './StopLimitStopLimitGtc';
 import { StopLimitStopLimitGtd } from './StopLimitStopLimitGtd';
 import { TriggerBracketGtc } from './TriggerBracketGtc';
 import { TriggerBracketGtd } from './TriggerBracketGtd';
+import { TwapLimitGtd } from './TwapLimitGtd';
 
 export type OrderConfiguration = {
   /**
@@ -49,6 +50,10 @@ export type OrderConfiguration = {
    * Buy or sell a specified quantity of an Asset at a specified price. The Order will only post to the Order Book if it is to immediately and completely Fill. [Read more on Limit Orders.](https://help.coinbase.com/en/coinbase/trading-and-funding/advanced-trade/order-types#limit-order)
    */
   limitLimitFok?: LimitLimitFok;
+  /**
+   * A time-weighted average price (TWAP) order type that calculates the average price of a product to programmatically execute an order over a specified duration.
+   */
+  twapLimitGtd?: TwapLimitGtd;
   /**
    * Posts an Order to buy or sell a specified quantity of an Asset, but only if and when the last trade price on the Order Book equals or surpasses the Stop Price. If posted, the Order will remain on the Order Book until canceled. [Read more on Stop-Limit Orders.](https://help.coinbase.com/en/coinbase/trading-and-funding/advanced-trade/order-types#stop-limit-order)
    */

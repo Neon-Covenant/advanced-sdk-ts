@@ -165,5 +165,9 @@ export type Product = {
    * The approximate trading volume for the product in the last 24 hours based on the current quote.
    */
   approximateQuote24hVolume?: string;
+  /**
+   * The timestamp when the product was listed. This is only populated if product has new tag.
+   */
+  newAt?: string;
   futureProductDetails?: FutureProductDetails;
 };

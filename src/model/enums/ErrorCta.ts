@@ -27,4 +27,5 @@ export enum ErrorCta {
   SellAll = 'ERROR_CTA_SELL_ALL',
   SwitchPayment = 'ERROR_CTA_SWITCH_PAYMENT',
   SellMaximum = 'ERROR_CTA_SELL_MAXIMUM',
+  Maintenance = 'ERROR_CTA_MAINTENANCE',
 }

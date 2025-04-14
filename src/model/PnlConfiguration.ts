@@ -21,5 +21,8 @@
 import { TriggerBracketPnl } from './TriggerBracketPnl';
 
 export type PnlConfiguration = {
+  /**
+   * PNL configuration for a bracket order.
+   */
   triggerBracketPnl?: TriggerBracketPnl;
 };

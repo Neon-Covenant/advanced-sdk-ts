@@ -18,9 +18,6 @@
  *  Do not edit the class manually.
  */
 
-/**
- *  - MARKET: A [market order](https://en.wikipedia.org/wiki/Order_(exchange)#Market_order)  - LIMIT: A [limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order)  - STOP: A stop order is an order that becomes a market order when triggered  - STOP_LIMIT: A stop order is a limit order that doesn\'t go on the book until it hits the stop price  - BRACKET: A bracket order is a way to mitigate potential losses in volatile markets, consisting of a limit price leg and a stop trigger price. Note: Bracket orders are currently in closed beta and may be disabled to resolve issues during testing. Stay tuned for the public release coming soon.
- */
 export enum OrderType {
   UnknownOrderType = 'UNKNOWN_ORDER_TYPE',
   Market = 'MARKET',
@@ -28,4 +25,5 @@ export enum OrderType {
   Stop = 'STOP',
   StopLimit = 'STOP_LIMIT',
   Bracket = 'BRACKET',
+  Twap = 'TWAP',
 }

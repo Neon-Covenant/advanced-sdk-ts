@@ -19,7 +19,7 @@
  */
 
 /**
- * A quantity of money.
+ * This is a clone of
  */
 export type Money = {
   amount?: string;

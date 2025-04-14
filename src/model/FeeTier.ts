@@ -47,4 +47,12 @@ export type FeeTier = {
    * Upper bound (exclusive) of pricing tier in usd of total assets on platform.
    */
   aopTo?: string;
+  /**
+   * Lower bound (inclusive) of pricing tier in notional volume for perpetual contracts.
+   */
+  perpsVolFrom?: string;
+  /**
+   * Upper bound (exclusive) of pricing tier in notional volume for perpetual contracts.
+   */
+  perpsVolTo?: string;
 };
