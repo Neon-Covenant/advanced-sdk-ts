@@ -20,8 +20,10 @@
 
 import { PaypalAccount } from './PaypalAccount';
 import { PaypalMerchant } from './PaypalMerchant';
+import { PaypalMetadata } from './PaypalMetadata';
 
 export type Paypal = {
   accountHolder?: PaypalAccount;
   merchant?: PaypalMerchant;
+  metadata?: PaypalMetadata;
 };

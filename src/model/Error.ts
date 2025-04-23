@@ -20,6 +20,7 @@
 
 import { ErrorCodes } from './enums/ErrorCodes';
 import { ErrorCta } from './enums/ErrorCta';
+import { ErrorMetadata } from './ErrorMetadata';
 
 /**
  * these are errors which prevent us from creating trades. Ie, BlackListed card
@@ -29,4 +30,6 @@ export type Error = {
   code?: string;
   errorCode?: ErrorCodes;
   errorCta?: ErrorCta;
+  errorMetadata?: ErrorMetadata;
+  title?: string;
 };

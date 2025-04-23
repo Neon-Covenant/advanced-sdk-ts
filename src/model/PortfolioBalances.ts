@@ -20,6 +20,9 @@
 
 import { Amount } from './Amount';
 
+/**
+ * PortfolioBalances is a summary of all balances within a given portfolio.
+ */
 export type PortfolioBalances = {
   totalBalance?: Amount;
   totalFuturesBalance?: Amount;

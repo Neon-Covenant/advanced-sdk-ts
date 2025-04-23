@@ -21,5 +21,6 @@
 import { InteracAccount } from './InteracAccount';
 
 export type Interac = {
+  pmsvcId?: string;
   account?: InteracAccount;
 };

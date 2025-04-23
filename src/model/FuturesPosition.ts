@@ -34,4 +34,6 @@ export type FuturesPosition = {
   productName?: string;
   venue?: string;
   notionalValue?: string;
+  assetColor?: string;
+  lastTradedAt?: string;
 };

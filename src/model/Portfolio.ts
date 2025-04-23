@@ -45,7 +45,7 @@ export type Portfolio = {
    */
   pendingFees?: string;
   /**
-   * Total borrow amount in USDC (nets the USDC balance, position PNL, held USDC, accured interest and rolling debt)
+   * Total borrow amount in USDC (nets the USDC balance, position PNL, held USDC, accrued interest and rolling debt)
    */
   borrow?: string;
   /**

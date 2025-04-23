@@ -22,6 +22,9 @@ import { BalancePair } from './BalancePair';
 import { FuturesPositionSide } from './enums/FuturesPositionSide';
 import { PortfolioMarginType } from './enums/PortfolioMarginType';
 
+/**
+ * PerpPosition defines a perpetuals position.
+ */
 export type PerpPosition = {
   productId?: string;
   productUuid?: string;
@@ -43,4 +46,5 @@ export type PerpPosition = {
   marginType?: PortfolioMarginType;
   liquidationBuffer?: string;
   liquidationPercentage?: string;
+  assetColor?: string;
 };

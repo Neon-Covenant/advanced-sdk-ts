@@ -22,4 +22,6 @@ export type DAppWalletAccount = {
   userUuid?: string;
   network?: string;
   cohortId?: string;
+  signingBackend?: string;
+  currency?: string;
 };

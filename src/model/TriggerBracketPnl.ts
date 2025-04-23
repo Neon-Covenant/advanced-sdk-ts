@@ -19,6 +19,12 @@
  */
 
 export type TriggerBracketPnl = {
+  /**
+   * PNL if an attached order fills at the take profit price.
+   */
   takeProfitPnl?: string;
+  /**
+   * PNL if an attached order fills at the stop loss price
+   */
   stopLossPnl?: string;
 };

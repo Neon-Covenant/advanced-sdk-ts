@@ -18,6 +18,9 @@
  *  Do not edit the class manually.
  */
 
+/**
+ * PortfolioMarginType defines the type of margin type.
+ */
 export enum PortfolioMarginType {
   Unspecified = 'MARGIN_TYPE_UNSPECIFIED',
   Cross = 'MARGIN_TYPE_CROSS',

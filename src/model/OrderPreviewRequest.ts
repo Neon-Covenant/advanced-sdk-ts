@@ -47,4 +47,8 @@ export type OrderPreviewRequest = {
    * **(Deprecated)** The ID of the portfolio to associate the order with. Only applicable for legacy keys. CDP keys will default to the key\'s permissioned portfolio.
    */
   retailPortfolioId?: string;
+  /**
+   * The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the parent order.
+   */
+  attachedOrderConfiguration?: OrderConfiguration;
 };

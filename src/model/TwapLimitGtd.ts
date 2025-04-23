@@ -39,4 +39,16 @@ export type TwapLimitGtd = {
    * The specified price, or better, that the Order should be executed at. A Buy Order will execute at or lower than the limit price. A Sell Order will execute at or higher than the limit price.
    */
   limitPrice?: string;
+  /**
+   * The number of smaller buckets/suborders over which the entire order will be broken into. Each suborder will be executed over a duration calculated based on the end_time
+   */
+  numberBuckets?: string;
+  /**
+   * The size of each suborder. bucket_size multiplied by number_buckets should match the size of the entire twap order)
+   */
+  bucketSize?: string;
+  /**
+   * The duration over which each sub order was executed
+   */
+  bucketDuration?: string;
 };

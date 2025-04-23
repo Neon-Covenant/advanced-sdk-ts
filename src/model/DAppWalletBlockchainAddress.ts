@@ -22,4 +22,6 @@ export type DAppWalletBlockchainAddress = {
   network?: string;
   address?: string;
   cohortId?: string;
+  userUuid?: string;
+  pool?: string;
 };

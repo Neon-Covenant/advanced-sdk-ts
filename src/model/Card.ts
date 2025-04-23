@@ -21,6 +21,7 @@
 import { Address } from './Address';
 import { CardDob } from './CardDob';
 import { CardScheme } from './enums/CardScheme';
+import { CheckoutToken } from './CheckoutToken';
 import { ExpiryDate } from './ExpiryDate';
 import { FirstDataToken } from './FirstDataToken';
 import { Merchant } from './Merchant';
@@ -28,11 +29,20 @@ import { VaultToken } from './VaultToken';
 import { WorldpayParams } from './WorldpayParams';
 
 export type Card = {
+  /**
+   * A card token locked to the Firstdata vendor.
+   */
   firstDataToken?: FirstDataToken;
   expiryDate?: ExpiryDate;
   postalCode?: string;
   merchant?: Merchant;
+  /**
+   * A card token provided by our generic token provider. This can technically be provided by any vendor, but is currently only provided by TokenEx. This token can be used to forward card information to any API using the token vault as a middleman.
+   */
   vaultToken?: VaultToken;
+  /**
+   * A card token locked to the Worldpay vendor.
+   */
   worldpayParams?: WorldpayParams;
   previousSchemeTxId?: string;
   customerName?: string;
@@ -45,4 +55,9 @@ export type Card = {
   lastFour?: string;
   customerDob?: CardDob;
   scheme?: CardScheme;
+  eightDigitBin?: string;
+  /**
+   * A card token locked to the Checkout vendor.
+   */
+  checkoutToken?: CheckoutToken;
 };

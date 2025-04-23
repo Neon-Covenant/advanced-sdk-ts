@@ -18,8 +18,10 @@
  *  Do not edit the class manually.
  */
 
+import { PnlConfiguration } from './PnlConfiguration';
 import { PreviewFailureReason } from './enums/PreviewFailureReason';
 import { PreviewWarningMsg } from './enums/PreviewWarningMsg';
+import { TwapBucketMetadata } from './TwapBucketMetadata';
 
 export type OrderPreviewResponse = {
   orderTotal: string;
@@ -58,4 +60,10 @@ export type OrderPreviewResponse = {
   currentLiquidationBuffer?: string;
   projectedLiquidationBuffer?: string;
   maxLeverage?: string;
+  /**
+   * Expected PNL of an order. This value is an estimate and does not take into account fees and slippage.
+   */
+  pnlConfiguration?: PnlConfiguration;
+  twapBucketMetadata?: TwapBucketMetadata;
+  positionNotionalLimit?: string;
 };

@@ -18,6 +18,9 @@
  *  Do not edit the class manually.
  */
 
+/**
+ * PortfolioType defines the type of Portfolio.
+ */
 export enum PortfolioType {
   Undefined = 'UNDEFINED',
   Default = 'DEFAULT',

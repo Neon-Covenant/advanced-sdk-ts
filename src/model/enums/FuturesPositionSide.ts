@@ -18,6 +18,9 @@
  *  Do not edit the class manually.
  */
 
+/**
+ * FuturesPosition defines the side of the position.
+ */
 export enum FuturesPositionSide {
   Unspecified = 'FUTURES_POSITION_SIDE_UNSPECIFIED',
   Long = 'FUTURES_POSITION_SIDE_LONG',

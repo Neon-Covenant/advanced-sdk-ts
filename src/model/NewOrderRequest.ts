@@ -55,4 +55,8 @@ export type NewOrderRequest = {
    * Preview ID for this order, to associate this order with a preview request
    */
   previewId?: string;
+  /**
+   * The configuration of the attached order. Only TriggerBracketGtc is eligible. Size field must be omitted as the size of the attached order is the same as that of the parent order.
+   */
+  attachedOrderConfiguration?: OrderConfiguration;
 };
